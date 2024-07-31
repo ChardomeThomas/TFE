@@ -20,6 +20,7 @@ export class LeafletMapComponent implements AfterViewInit {
   private cityMarkers: L.Marker[] = [];  // Pour stocker les marqueurs de villes
   private countryLayers: L.LayerGroup = L.layerGroup(); // Pour stocker les couches de pays
   private jsonData: Country[] = [];  // Stocker les données JSON pour les utiliser lors du zoom
+  private hongKongMarker!: L.Marker;  // Marqueur pour Hong Kong
 
   constructor(
     private mapService: MapService,
@@ -114,6 +115,9 @@ export class LeafletMapComponent implements AfterViewInit {
     this.map.on('zoomend', () => {
       if (this.map.getZoom() < 5) {
         this.clearCityMarkers();
+        if (!this.map.hasLayer(this.hongKongMarker)) {
+          this.hongKongMarker.addTo(this.map);
+        }
       }
     });
   }
@@ -133,6 +137,7 @@ export class LeafletMapComponent implements AfterViewInit {
           onEachFeature: (feature, layer) => {
             layer.on('click', (e) => {
               this.map.fitBounds(e.target.getBounds());
+              this.hongKongMarker.remove();  // Retirer le marqueur de Hong Kong
               this.addCityMarkers('Hong Kong');
             });
             this.countryLayers.addLayer(layer); // Ajout de la couche au LayerGroup
@@ -141,13 +146,15 @@ export class LeafletMapComponent implements AfterViewInit {
 
         // Ajouter un marqueur à Hong Kong
         const hongKongLatLng = L.latLng(22.3193, 114.1694);  // Coordonnées de Hong Kong
-        const marker = L.marker(hongKongLatLng).addTo(this.map);
-        marker.bindPopup('<b>Hong Kong</b>');
+        this.hongKongMarker = L.marker(hongKongLatLng).addTo(this.map);
+        this.hongKongMarker.bindPopup('<b>Hong Kong</b>');
 
         // Ajouter un événement de clic pour zoomer sur le marqueur
-        marker.on('click', () => {
+        this.hongKongMarker.on('click', () => {
           this.map.setView(hongKongLatLng, 10);  // Zoomer à un niveau 10
-          marker.openPopup();  // Ouvrir la popup du marqueur
+          this.hongKongMarker.openPopup();  // Ouvrir la popup du marqueur
+          this.hongKongMarker.remove();  // Retirer le marqueur après le zoom
+          this.addCityMarkers('Hong Kong');  // Ajouter les marqueurs des villes
         });
       },
       (error) => {
@@ -168,6 +175,10 @@ export class LeafletMapComponent implements AfterViewInit {
       });
     } else {
       this.clearCityMarkers();
+      // Réafficher le marqueur de Hong Kong lors du dézoom
+      if (!this.map.hasLayer(this.hongKongMarker)) {
+        this.hongKongMarker.addTo(this.map);
+      }
     }
   }
 
@@ -183,6 +194,9 @@ export class LeafletMapComponent implements AfterViewInit {
                 const latLng = L.latLng(data[0].lat, data[0].lon);
                 const marker = L.marker(latLng).addTo(this.map);
                 marker.bindPopup(`<b>${city}</b>`);
+                marker.on('click', () => {
+                  this.map.setView(latLng, 12);  // Zoomer sur la ville lorsqu'on clique sur le marqueur
+                });
                 this.cityMarkers.push(marker);
               }
             },
