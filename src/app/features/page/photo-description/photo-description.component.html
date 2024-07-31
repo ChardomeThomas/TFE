@@ -1,0 +1,10 @@
+<div (click)="goBack()"><p>back</p></div>
+
+<div class="container" *ngIf="photoUrl">
+    <p>{{ photoDescription }}</p>
+    <img [src]="photoUrl" alt="{{ photoDescription }}" class="photo-detail">
+  </div>
+  <div *ngIf="!photoUrl">
+    <p>Photo not found.</p>
+  </div>
+  

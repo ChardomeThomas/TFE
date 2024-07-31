@@ -1,0 +1,12 @@
+<div (click)="goBack()"><p>back</p></div>
+<p *ngIf="countryData">
+  Cities in {{ countryData.country }}:
+</p>
+<ul *ngIf="countryData">
+  <li *ngFor="let city of getCityNames(countryData.villes)">
+    <a (click)="onCountryCityClick(countryData.country, city)">{{ city }}</a>
+  </li>
+</ul>
+<p *ngIf="!countryData">
+  No data found for the country.
+</p>

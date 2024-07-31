@@ -1,0 +1,37 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    flex-direction: column; /* Ajouter cette ligne pour définir la direction par défaut */
+    gap: 20px; /* Ajouter un espace entre les drapeaux si nécessaire */
+}
+
+.country_flag {
+    cursor: pointer;
+    width: 200px;
+}
+
+.countryName {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 768px) {
+    section {
+        width: 100%;
+    }
+    .container {
+        flex-direction: row; /* Redondant, déjà défini par défaut */
+        width: 100%;
+    }
+    .country_flag {
+        width: 300px;
+    }
+    .countryName {
+        font-size: 20px;
+    }
+}

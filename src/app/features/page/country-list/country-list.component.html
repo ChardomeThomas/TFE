@@ -1,0 +1,9 @@
+<div (click)="goBack()"><p>back</p></div>
+<section>
+  <div class="container">
+    <div *ngFor="let countryData of jsonData; let i = index" (click)="onCountryClick(countryData.country)" style="position: relative;">
+      <div class="countryName">{{ countryData.country }}</div>
+      <img class="country_flag" [src]="countryData.drapeau" alt="{{ countryData.country }}">
+    </div>
+  </div>
+</section>

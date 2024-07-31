@@ -1,0 +1,15 @@
+<div (click)="goBack()"><p>back</p></div>
+<h1>Details for Day {{ day }} in {{ city }}, {{ country }}</h1>
+<div *ngIf="dayData">
+  <h2>{{ dayData.date }}</h2>
+  <p>{{ dayData.description }}</p>
+  <div class="container">
+    <div *ngFor="let photo of dayData.photos; let i = index" (click)="onPhotoClick(i)">
+      <p>{{ photo.description }}</p>
+      <img [src]="photo.url" alt="{{ photo.description }}">
+    </div>
+  </div>
+</div>
+<div *ngIf="!dayData">
+  <p>No data found for Day {{ day }} in {{ city }}, {{ country }}.</p>
+</div>

@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { JsonService } from '../../../core/service/jsonService/json.service';
+import { Country, Jour } from '../../../interface/country.interface';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-day-description',
+  templateUrl: './day-description.component.html',
+  imports: [CommonModule],
+  standalone: true,
+  styleUrls: ['./day-description.component.css']
+})
+export class DayDescriptionComponent implements OnInit {
+  country!: string;
+  city!: string;
+  day!: string;
+  dayData: Jour | undefined;
+
+  constructor(private route: ActivatedRoute, private jsonService: JsonService, private router: Router) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.country = params.get('country')!;
+      this.city = params.get('city')!;
+      this.day = params.get('day')!;
+      this.loadDayData();
+    });
+  }
+
+  loadDayData() {
+    this.jsonService.getJsonData().subscribe((data: Country[]) => {
+      const countryData = data.find(country => country.country === this.country);
+      if (countryData) {
+        const cityData = countryData.villes[this.city];
+        if (cityData) {
+          this.dayData = cityData.jours.find((jour: Jour) => `Jour${jour.jour}` === this.day);
+          console.log('Day data:', this.dayData);
+        }
+      }
+    });
+  }
+  goBack() {
+    this.router.navigate([`/${this.country}/${this.city}`]);
+  }
+  onPhotoClick(photoIndex: number) {
+    this.router.navigate([`/${this.country}/${this.city}/${this.day}/photos/${photoIndex}`]);
+  }
+}
