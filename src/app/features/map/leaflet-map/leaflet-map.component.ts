@@ -3,8 +3,10 @@ import * as L from 'leaflet';
 import { MapService } from '../../../core/service/mapService/map.service';
 import { JsonService } from '../../../core/service/jsonService/json.service';
 import { FeatureCollection } from 'geojson';
-import { Country } from '../../../interface/country.interface';
+import { Country, Jour } from '../../../interface/country.interface';
 import { GeocodingService } from '../../../core/service/mapService/geoCoding.service';
+import 'leaflet-sidebar-v2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leaflet-map',
@@ -16,6 +18,7 @@ import { GeocodingService } from '../../../core/service/mapService/geoCoding.ser
 })
 export class LeafletMapComponent implements AfterViewInit {
   private map!: L.Map;
+  private sidebar!: any; // Utilisation de "any" car Leaflet Sidebar n'a pas de types définis par défaut
   private visitedCountries: Set<string> = new Set();
   private cityMarkers: L.Marker[] = [];  // Pour stocker les marqueurs de villes
   private countryLayers: L.LayerGroup = L.layerGroup(); // Pour stocker les couches de pays
@@ -25,7 +28,8 @@ export class LeafletMapComponent implements AfterViewInit {
   constructor(
     private mapService: MapService,
     private jsonService: JsonService,
-    private geocodingService: GeocodingService
+    private geocodingService: GeocodingService,
+    private router : Router
   ) {}
 
   ngAfterViewInit(): void {
@@ -47,6 +51,12 @@ export class LeafletMapComponent implements AfterViewInit {
 
     this.loadVisitedCountries();
     this.map.on('zoomend moveend', this.handleMapMoveEnd.bind(this));
+
+    // Initialisation de la sidebar
+    this.sidebar = (L.control as any).sidebar({
+      container: 'sidebar',
+      position: 'left'
+    }).addTo(this.map);
   }
 
   private loadVisitedCountries(): void {
@@ -100,6 +110,9 @@ export class LeafletMapComponent implements AfterViewInit {
               layer.on('click', (e) => {
                 this.map.fitBounds(e.target.getBounds());
                 this.addCityMarkers(feature.properties.ADMIN);
+                // Mettre à jour et ouvrir la sidebar
+                this.updateSidebarContent(feature.properties.ADMIN);
+                this.sidebar.open('home'); // 'home' doit correspondre à l'ID de l'onglet dans la sidebar
               });
               this.countryLayers.addLayer(layer); // Ajout de la couche au LayerGroup
             }
@@ -139,6 +152,9 @@ export class LeafletMapComponent implements AfterViewInit {
               this.map.fitBounds(e.target.getBounds());
               this.hongKongMarker.remove();  // Retirer le marqueur de Hong Kong
               this.addCityMarkers('Hong Kong');
+              // Mettre à jour et ouvrir la sidebar
+              this.updateSidebarContent('Hong Kong');
+              this.sidebar.open('home'); // 'home' doit correspondre à l'ID de l'onglet dans la sidebar
             });
             this.countryLayers.addLayer(layer); // Ajout de la couche au LayerGroup
           }
@@ -155,6 +171,9 @@ export class LeafletMapComponent implements AfterViewInit {
           this.hongKongMarker.openPopup();  // Ouvrir la popup du marqueur
           this.hongKongMarker.remove();  // Retirer le marqueur après le zoom
           this.addCityMarkers('Hong Kong');  // Ajouter les marqueurs des villes
+          // Mettre à jour et ouvrir la sidebar
+          this.updateSidebarContent('Hong Kong');
+          this.sidebar.open('home'); // 'home' doit correspondre à l'ID de l'onglet dans la sidebar
         });
       },
       (error) => {
@@ -193,9 +212,13 @@ export class LeafletMapComponent implements AfterViewInit {
               if (data.length > 0) {
                 const latLng = L.latLng(data[0].lat, data[0].lon);
                 const marker = L.marker(latLng).addTo(this.map);
-                marker.bindPopup(`<b>${city}</b>`);
+                const cityData = cities[city];
+                const days = cityData.jours ? cityData.jours.map((j: Jour) => j.titre).join(', ') : 'No days available';
+                marker.bindPopup(`<b>${city}</b><br>Days: ${days}`);
                 marker.on('click', () => {
                   this.map.setView(latLng, 12);  // Zoomer sur la ville lorsqu'on clique sur le marqueur
+                  this.updateSidebarContentForCity(country, city, cityData.jours);  // Mettre à jour la sidebar avec les jours
+                  this.sidebar.open('home');  // Ouvrir la sidebar
                 });
                 this.cityMarkers.push(marker);
               }
@@ -208,9 +231,72 @@ export class LeafletMapComponent implements AfterViewInit {
       }
     }
   }
+  
+  
+  
 
   private clearCityMarkers(): void {
     this.cityMarkers.forEach(marker => this.map.removeLayer(marker));
     this.cityMarkers = [];
   }
+  private updateSidebarContentForCity(country: string, city: string, days: Jour[]): void {
+    const sidebarContent = document.getElementById('sidebar-content');
+    if (sidebarContent) {
+      sidebarContent.innerHTML = `<h1>${city}</h1>`;
+      if (days && days.length > 0) {
+        days.forEach((day, index) => {
+          sidebarContent.innerHTML += `<p class="day-link" data-day="${index}">${day.date}: ${day.titre}</p>`;
+        });
+  
+        // Ajouter un événement de clic pour chaque jour
+        const dayLinks = sidebarContent.getElementsByClassName('day-link');
+        for (let i = 0; i < dayLinks.length; i++) {
+          dayLinks[i].addEventListener('click', (event) => {
+            const target = event.target as HTMLElement;
+            const dayIndex = target.getAttribute('data-day');
+            if (dayIndex !== null) {
+              this.router.navigate([`${country}/${city}/Jour${parseInt(dayIndex) + 1}`]);
+            }
+          });
+        }
+      } else {
+        sidebarContent.innerHTML += `<p>No days available</p>`;
+      }
+    }
+  }
+  
+  
+
+  
+  private updateSidebarContent(country: string): void {
+    const countryData = this.jsonData.find(c => c.country === country);
+    if (countryData) {
+      const sidebarContent = document.getElementById('sidebar-content');
+      if (sidebarContent) {
+        sidebarContent.innerHTML = `<h1>${country}</h1>`;
+        const cities = countryData.villes;
+        for (const city in cities) {
+          if (cities.hasOwnProperty(city)) {
+            sidebarContent.innerHTML += `<p class="city-link" data-city="${city}">${city}</p>`;
+          }
+        }
+  
+        // Ajouter un événement de clic pour chaque ville dans la sidebar
+        const cityLinks = sidebarContent.getElementsByClassName('city-link');
+        for (let i = 0; i < cityLinks.length; i++) {
+          cityLinks[i].addEventListener('click', (event) => {
+            const target = event.target as HTMLElement;
+            const cityName = target.getAttribute('data-city');
+            if (cityName) {
+              const cityData = cities[cityName];
+              this.updateSidebarContentForCity(country, cityName, cityData.jours);
+            }
+          });
+        }
+      }
+    }
+  }
+  
+
+  
 }

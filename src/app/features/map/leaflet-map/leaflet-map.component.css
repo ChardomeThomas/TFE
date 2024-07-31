@@ -10,3 +10,13 @@
 }
 
 
+
+
+.leaflet-sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width:300px;
+  z-index: 800;
+  pointer-events: auto;
+}

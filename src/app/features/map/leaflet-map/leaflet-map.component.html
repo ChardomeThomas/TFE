@@ -1,2 +1,20 @@
-<p>coucou</p>
-<div id="map" style="height: 600px; border: 2px solid blue;"></div>
+<div id="map" style="width: 100%; height: 100vh;"></div>
+<div id="sidebar" class="leaflet-sidebar collapsed">
+  <!-- Onglets de la sidebar -->
+  <div class="leaflet-sidebar-tabs">
+    <ul role="tablist">
+      <li><a href="#home" role="tab"><i class="fa fa-home"></i></a></li>
+      <!-- Ajoutez d'autres onglets ici -->
+    </ul>
+  </div>
+
+  <!-- Contenu de la sidebar -->
+  <div class="leaflet-sidebar-content">
+    <div class="leaflet-sidebar-pane" id="home">
+      <h1 class="leaflet-sidebar-header">Details
+        <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
+      </h1>
+      <div id="sidebar-content"></div> <!-- Ajoutez cet élément -->
+    </div>
+  </div>
+</div>
