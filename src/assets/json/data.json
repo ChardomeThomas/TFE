@@ -1,9 +1,9 @@
 [
   {
-    "country": "HongKong",
+    "country": "Hong Kong",
     "drapeau": "/assets/image/drapeau/hongKong.png",
     "villes": {
-      "HongKong": {
+      "Hong Kong": {
         "jours": [
           {
             "jour": 1,
@@ -3022,11 +3022,12 @@
             ]
           }
         ]
-      }
+      },
+      "Discovery Bay":[]
     }
   },
   {
-    "country": "Allemagne",
+    "country": "Germany",
     "drapeau": "/assets/image/drapeau/allemagne.png",
     "villes": {
       "Hambourg": {
