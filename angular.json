@@ -25,9 +25,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "https://unpkg.com/leaflet-sidebar-v2/css/leaflet-sidebar.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/leaflet/dist/leaflet.js",
+              "https://unpkg.com/leaflet-sidebar-v2/js/leaflet-sidebar.min.js"
+            ]
           },
           "configurations": {
             "production": {

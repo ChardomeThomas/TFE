@@ -1,0 +1,12 @@
+@import "https://unpkg.com/leaflet-sidebar-v2/css/leaflet-sidebar.min.css";
+
+#map {
+  height: 600px;
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+
