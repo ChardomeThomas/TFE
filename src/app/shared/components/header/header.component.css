@@ -1,8 +1,29 @@
+
 .logo img{
+    display: block;
+    margin: auto;
     width: 100px;
     height: 100px;
     top:0;
     left:0;
     display: block;
     cursor:pointer;
+    margin-bottom:40px;
 }
+
+@media only screen and (min-width: 600px) {
+    .container {
+        /* width: 100vw; Assure que l'élément prend toute la hauteur de la page */
+        background-color: #DAC5AA; /* Utilise la couleur de ton choix */
+        padding-bottom:30px;
+      }
+    .logo img{
+        margin:0;
+        width: 200px;
+        height: 200px;
+        top:0;
+        left:0;
+        display: block;
+        cursor:pointer;
+    }
+ }

@@ -3,11 +3,13 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { JsonService } from '../../../core/service/jsonService/json.service';
 import { Country, Jour } from '../../../interface/country.interface'; // Assurez-vous que le chemin est correct
 import { CommonModule } from '@angular/common';
-
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'app-city-day',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardModule, MatToolbar, MatButton],
   templateUrl: './city-day.component.html',
   styleUrls: ['./city-day.component.css']
 })

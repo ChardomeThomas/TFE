@@ -1,10 +1,17 @@
-<div (click)="goBack()"><p>back</p></div>
-<h1>Information for {{ city }}, {{ country }}</h1>
-<div *ngIf="cityData">
 
-  <div class="container" *ngFor="let jour of cityData.jours; let i = index" (click)="onDayClick(country, city, jour.jour)">
-    <h2>Jour {{ jour.jour }}</h2>
-    <p>{{ jour.description }}</p>
-    <!-- <img [src]="jour.photos[0].url" alt="photo du jour"> -->
-  </div>
-</div>
+  <mat-toolbar>
+    <button mat-button (click)="goBack()">← retour liste des villes</button>
+  </mat-toolbar>
+  
+  <ng-container *ngIf="cityData">
+    <h1 class="title">{{ city }}</h1>
+    <div class="timeline">
+      <div *ngFor="let jour of cityData.jours; let i = index" class="timeline-item">
+        <mat-card (click)="onDayClick(country, city, jour.jour)" class="day-card">
+          <h2>Jour {{ jour.jour }}</h2>
+          <p>{{ jour.description }}</p>
+        </mat-card>
+      </div>
+    </div>
+  </ng-container>
+  

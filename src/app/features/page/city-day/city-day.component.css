@@ -1,7 +1,83 @@
-img{
-    width:200px;
+:host {
+    display: block;
+    background-color: #DAC5AA; /* Utilise la couleur de ton choix */
+    height: 100%; /* Assure que l'élément prend toute la hauteur de la page */
+    /* width:100vw; */
+  }
+.mat-toolbar{
+    padding:0;
+    margin-bottom:10px;
 }
+.timeline-item{
+    border-bottom: 1px solid black;
+    margin-bottom:10px;
+}
+p{
+    font-family: playwrite;
+    font-weight: 300;
 
-.container{
-    display:flex;
 }
+  @media only screen and (min-width: 600px) {
+    .title{
+        margin-left:50%
+    }
+    
+    .timeline {
+        position: relative;
+        /* margin: 20px 0; */
+        padding: 0;
+        list-style: none;
+      }
+      
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 30px; /* Ajustez cette valeur pour déplacer la ligne */
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #c5c5c5;
+      }
+      
+      .timeline-item {
+        /* display: flex;
+        align-items: flex-start; */
+        position: relative;
+        margin-bottom: 20px;
+        border-bottom: none;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 21px; /* Ajustez cette valeur pour centrer le point */
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid #c5c5c5;
+      }
+      
+      .day-card {
+        display: flex;
+        flex-direction: row;
+        margin-left: 60px; /* Espace pour le titre du jour */
+        padding: 20px;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        cursor:pointer;
+    
+      }
+      
+      .day-card h2 {
+        margin: 0;
+      }
+      
+      .day-card p {
+        margin: 0;
+        padding-left: 20px; /* Espace entre le titre et la description */
+        flex: 1;
+      }
+    
+  }
