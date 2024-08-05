@@ -1,5 +1,5 @@
 <div (click)="goBack()"><p>back</p></div>
-<h1>Details for Day {{ day }} in {{ city }}, {{ country }}</h1>
+<h1>{{ city }} {{ day }} , {{ country }}</h1>
 <div *ngIf="dayData">
   <h2>{{ dayData.date }}</h2>
   <p>{{ dayData.description }}</p>
@@ -9,7 +9,7 @@
       <img [src]="photo.url" alt="{{ photo.description }}">
     </div>
   </div>
-</div>
+</div>d
 <div *ngIf="!dayData">
   <p>No data found for Day {{ day }} in {{ city }}, {{ country }}.</p>
 </div>

@@ -21,7 +21,7 @@ export class CountryListComponent implements OnInit {
       data => {
         console.log('Data received:', data);
         this.jsonData = data;
-        this.processJsonData();
+        // this.processJsonData();
       },
       error => {
         console.error('Error fetching data:', error);
@@ -29,16 +29,16 @@ export class CountryListComponent implements OnInit {
     );
   }
 
-  processJsonData() {
-    console.log('processJsonData called');
-    if (Array.isArray(this.jsonData)) {
-      this.jsonData.forEach((item, index) => {
-        console.log(`Item ${index}:`, item);
-      });
-    } else {
-      console.log('JSON data is not an array.');
-    }
-  }
+//   processJsonData() {
+//     console.log('processJsonData called');
+//     if (Array.isArray(this.jsonData)) {
+//       this.jsonData.forEach((item, index) => {
+//         console.log(`Item ${index}:`, item);
+//       });
+//     } else {
+//       console.log('JSON data is not an array.');
+//     }
+//   }
   onCountryClick(country: string) {
     this.router.navigate([`/${country}/country-city`]);
   }
