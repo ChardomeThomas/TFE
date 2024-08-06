@@ -29,16 +29,7 @@ export class CountryListComponent implements OnInit {
     );
   }
 
-//   processJsonData() {
-//     console.log('processJsonData called');
-//     if (Array.isArray(this.jsonData)) {
-//       this.jsonData.forEach((item, index) => {
-//         console.log(`Item ${index}:`, item);
-//       });
-//     } else {
-//       console.log('JSON data is not an array.');
-//     }
-//   }
+
   onCountryClick(country: string) {
     this.router.navigate([`/${country}/country-city`]);
   }

@@ -18,12 +18,12 @@ import { Router } from '@angular/router';
 })
 export class LeafletMapComponent implements AfterViewInit {
   private map!: L.Map;
-  private sidebar!: any; // Utilisation de "any" car Leaflet Sidebar n'a pas de types définis par défaut
+  private sidebar!: any; 
   private visitedCountries: Set<string> = new Set();
-  private cityMarkers: L.Marker[] = [];  // Pour stocker les marqueurs de villes
-  private countryLayers: L.LayerGroup = L.layerGroup(); // Pour stocker les couches de pays
-  private jsonData: Country[] = [];  // Stocker les données JSON pour les utiliser lors du zoom
-  private hongKongMarker!: L.Marker;  // Marqueur pour Hong Kong
+  private cityMarkers: L.Marker[] = [];  
+  private countryLayers: L.LayerGroup = L.layerGroup(); 
+  private jsonData: Country[] = []; 
+  private hongKongMarker!: L.Marker; 
 
   constructor(
     private mapService: MapService,
@@ -62,10 +62,10 @@ export class LeafletMapComponent implements AfterViewInit {
   private loadVisitedCountries(): void {
     this.jsonService.getJsonData().subscribe(
       (data: Country[]) => {
-        this.jsonData = data;  // Stocker les données JSON
+        this.jsonData = data;  
         data.forEach(country => this.visitedCountries.add(country.country));
         this.loadGeoJSON();
-        this.loadHongKongData();  // Charger les données spécifiques de Hong Kong
+        this.loadHongKongData();  
       },
       (error) => {
         console.error('Erreur lors du chargement des données JSON:', error);
