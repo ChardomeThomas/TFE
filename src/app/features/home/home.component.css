@@ -1,26 +1,58 @@
-/* src/app/home/home.component.css */
+/* Styles communs (s'appliquent à tous les écrans) */
+.button {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .clickable-image {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-  
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.clickable-image img {
+  display: block;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Mobile (par défaut) */
+.clickable-image img {
+  width: 200px;
+  height: 200px;
+  font-size: 20px;
+}
+
+/* Tablette */
+@media (min-width: 768px) {
   .clickable-image img {
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 250px;
+    height: 250px;
   }
-  
   .text-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 20px;
+    font-size: 24px;
   }
-  
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .clickable-image img {
+    width: 500px;
+    height: 500px;
+  }
+  .text-overlay {
+    font-size: 28px;
+  }
+}

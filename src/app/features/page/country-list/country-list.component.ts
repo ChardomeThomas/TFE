@@ -3,11 +3,12 @@ import { JsonService } from '../../../core/service/jsonService/json.service';
 import { CommonModule } from '@angular/common';
 import { Country } from '../../../interface/country.interface';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule],
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.css']
 })

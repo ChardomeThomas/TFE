@@ -214,7 +214,7 @@ export class LeafletMapComponent implements AfterViewInit {
                 const marker = L.marker(latLng).addTo(this.map);
                 const cityData = cities[city];
                 const days = cityData.jours ? cityData.jours.map((j: Jour) => j.titre).join(', ') : 'No days available';
-                marker.bindPopup(`<b>${city}</b><br>Days: ${days}`);
+                marker.bindPopup(`<b>${city}</b>`);
                 marker.on('click', () => {
                   this.map.setView(latLng, 12);  // Zoomer sur la ville lorsqu'on clique sur le marqueur
                   this.updateSidebarContentForCity(country, city, cityData.jours);  // Mettre à jour la sidebar avec les jours

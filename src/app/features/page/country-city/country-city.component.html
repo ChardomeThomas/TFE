@@ -1,12 +1,17 @@
-<div (click)="goBack()"><p>back</p></div>
-<p *ngIf="countryData">
+<div class="back-button" (click)="goBack()">
+  <p>← Retour à la liste des pays</p>
+</div>
+
+<h1 *ngIf="countryData" class="country-title">
   Cities in {{ countryData.country }}:
-</p>
-<ul *ngIf="countryData">
-  <li *ngFor="let city of getCityNames(countryData.villes)">
-    <a (click)="onCountryCityClick(countryData.country, city)">{{ city }}</a>
+</h1>
+
+<ul *ngIf="countryData" class="city-list">
+  <li *ngFor="let city of getCityNames(countryData.villes)" class="city-item">
+    <a (click)="onCountryCityClick(countryData.country, city)" class="city-link">{{ city }}</a>
   </li>
 </ul>
-<p *ngIf="!countryData">
+
+<p *ngIf="!countryData" class="no-data">
   No data found for the country.
 </p>

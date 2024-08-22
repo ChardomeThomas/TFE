@@ -1,16 +1,17 @@
+/* Styles communs (s'appliquent à tous les écrans) */
 .container {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-    flex-direction: column; /* Ajouter cette ligne pour définir la direction par défaut */
-    gap: 20px; /* Ajouter un espace entre les drapeaux si nécessaire */
+    flex-direction: column; /* Par défaut, en colonne pour les petits écrans */
+    gap: 20px; /* Espace entre les drapeaux */
 }
 
 .country_flag {
     cursor: pointer;
-    width: 200px;
+    width: 200px; /* Taille par défaut des drapeaux */
 }
 
 .countryName {
@@ -20,18 +21,30 @@
     transform: translate(-50%, -50%);
 }
 
+/* Tablette */
 @media screen and (min-width: 768px) {
-    section {
-        width: 100%;
-    }
     .container {
-        flex-direction: row; /* Redondant, déjà défini par défaut */
+        flex-direction: row; /* Aligner les drapeaux en ligne sur les tablettes */
         width: 100%;
     }
     .country_flag {
-        width: 300px;
+        width: 250px; /* Agrandir les drapeaux sur les tablettes */
     }
     .countryName {
-        font-size: 20px;
+        font-size: 18px; /* Augmenter légèrement la taille du texte */
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+    .container {
+        flex-direction: row; /* Assurer que les drapeaux restent en ligne sur les desktops */
+        width: 100%;
+    }
+    .country_flag {
+        width: 300px; /* Agrandir les drapeaux pour les desktops */
+    }
+    .countryName {
+        font-size: 20px; /* Augmenter davantage la taille du texte */
     }
 }

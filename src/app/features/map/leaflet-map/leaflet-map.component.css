@@ -1,19 +1,98 @@
+/* Import du CSS de Leaflet Sidebar */
 @import "https://unpkg.com/leaflet-sidebar-v2/css/leaflet-sidebar.min.css";
 
+/* Styles de base pour la carte */
 #map {
-  height: 600px;
+  height: 100vh; /* Assurer que la carte prend toute la hauteur de l'écran */
+  width: 100%; /* Assurer que la carte prend toute la largeur de l'écran */
+  margin: 0;
+  padding: 0;
 }
-
+.leaflet-sidebar-header{
+  margin-top:-15px;
+}
 .leaflet-container {
-  height: 100%;
-  width: 100%;
+  height: 100%; 
+  width: 100%; 
+  position: relative;
 }
 
+/* Styles pour la sidebar */
 .leaflet-sidebar {
   position: absolute;
   top: 0;
   bottom: 0;
-  width:300px;
+  width: 300px;
   z-index: 800;
   pointer-events: auto;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Responsive pour petits écrans */
+@media (max-width: 767px) {
+  .leaflet-sidebar {
+    width: 200px; /* Réduire la largeur de la sidebar sur les petits écrans */
+  }
+}
+
+/* Responsive pour tablettes */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .leaflet-sidebar {
+    width: 250px; /* Ajuster la largeur de la sidebar sur les tablettes */
+  }
+}
+
+/* Styles spécifiques pour les icônes et le contenu de la sidebar */
+.leaflet-sidebar .leaflet-sidebar-tabs ul li a {
+  color: #333;
+  font-size: 20px;
+  padding: 10px;
+  display: block;
+  transition: color 0.2s;
+}
+
+.leaflet-sidebar .leaflet-sidebar-tabs ul li a:hover {
+  color: #007bff; /* Changer la couleur au survol */
+}
+
+
+
+.leaflet-sidebar .leaflet-sidebar-pane {
+  padding: 15px;
+  overflow-y: auto;
+}
+
+/* Assurer que la carte reste visible même quand la sidebar est ouverte */
+.leaflet-container.sidebar-open {
+  width: calc(100% - 300px); /* Réduire la largeur de la carte quand la sidebar est ouverte */
+}
+
+/* Responsive pour petits écrans : ajuster la largeur de la carte */
+@media (max-width: 767px) {
+  .leaflet-container.sidebar-open {
+    width: calc(100% - 200px); /* Ajuster la largeur de la carte quand la sidebar est ouverte sur petits écrans */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .leaflet-container.sidebar-open {
+    width: calc(100% - 250px); /* Ajuster la largeur de la carte quand la sidebar est ouverte sur tablettes */
+  }
+}
+
+/* Optionnel : Style pour le bouton de fermeture de la sidebar */
+.leaflet-sidebar .leaflet-sidebar-close {
+  cursor: pointer;
+  font-size: 18px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.leaflet-sidebar .leaflet-sidebar-close:hover {
+  color: #ff0000; /* Changer la couleur au survol */
 }
