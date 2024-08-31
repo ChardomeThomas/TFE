@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JsonService } from '../../../core/service/jsonService/json.service';
 import { Country, Jour } from '../../../interface/country.interface';
 import { CommonModule } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
   selector: 'app-day-description',
   templateUrl: './day-description.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule, NgxSkeletonLoaderModule],
   standalone: true,
   styleUrls: ['./day-description.component.css']
 })
@@ -35,6 +36,14 @@ export class DayDescriptionComponent implements OnInit {
         const cityData = countryData.villes[this.city];
         if (cityData) {
           this.dayData = cityData.jours.find((jour: Jour) => `Jour${jour.jour}` === this.day);
+          
+          // Initialiser la propriété 'loaded' pour chaque photo
+          if (this.dayData?.photos) {
+            this.dayData.photos.forEach(photo => {
+              (photo as any).loaded = false; // Ajouter la propriété 'loaded'
+            });
+          }
+  
           console.log('Day data:', this.dayData);
         }
       }

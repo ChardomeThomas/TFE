@@ -6,10 +6,24 @@
   <div class="container">
     <div *ngFor="let photo of dayData.photos; let i = index" (click)="onPhotoClick(i)">
       <p>{{ photo.description }}</p>
-      <img [src]="photo.url" alt="{{ photo.description }}">
+      
+      <!-- Ngx Skeleton Loader -->
+      <ngx-skeleton-loader 
+        *ngIf="!photo.loaded" 
+        count="1" 
+        appearance="circle" 
+        animation="progress-dark">
+      </ngx-skeleton-loader>
+      
+      <!-- Image -->
+      <img 
+        [src]="photo.url" 
+        alt="{{ photo.description }}" 
+        (load)="photo.loaded = true" 
+        [hidden]="!photo.loaded">
     </div>
   </div>
-</div>d
+</div>
 <div *ngIf="!dayData">
   <p>No data found for Day {{ day }} in {{ city }}, {{ country }}.</p>
 </div>
