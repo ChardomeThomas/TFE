@@ -5,15 +5,22 @@
     justify-content: center;
     align-items: center;
     padding-top: 20px;
-    flex-direction: column; /* Par défaut, en colonne pour les petits écrans */
-    gap: 20px; /* Espace entre les drapeaux */
+    flex-direction: column; 
+    gap: 20px; 
 }
 
 .country_flag {
     cursor: pointer;
-    width: 200px; /* Taille par défaut des drapeaux */
+    width: 200px; 
 }
-
+.back-button {
+    display: inline-block; 
+    margin: 20px 0;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    width: auto; 
+}
 .countryName {
     position: absolute;
     top: 50%;
@@ -21,30 +28,66 @@
     transform: translate(-50%, -50%);
 }
 
-/* Tablette */
+
 @media screen and (min-width: 768px) {
     .container {
-        flex-direction: row; /* Aligner les drapeaux en ligne sur les tablettes */
+        flex-direction: row; 
         width: 100%;
     }
     .country_flag {
-        width: 250px; /* Agrandir les drapeaux sur les tablettes */
+        width: 250px; 
     }
     .countryName {
-        font-size: 18px; /* Augmenter légèrement la taille du texte */
+        font-size: 18px; 
     }
 }
 
-/* Desktop */
 @media screen and (min-width: 1024px) {
     .container {
-        flex-direction: row; /* Assurer que les drapeaux restent en ligne sur les desktops */
+        flex-direction: row; 
         width: 100%;
     }
     .country_flag {
-        width: 300px; /* Agrandir les drapeaux pour les desktops */
+        width: 300px; 
     }
     .countryName {
-        font-size: 20px; /* Augmenter davantage la taille du texte */
+        font-size: 20px; 
     }
 }
+/* Overlay pour le fond */
+.modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+  }
+  
+  /* Contenu de la fenêtre modale */
+  .modal-content {
+	background: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	width: 90%;
+	max-width: 500px;
+	text-align: center;
+	position: relative;
+  }
+  
+  /* Bouton de fermeture */
+  .close-button {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+  }
+  

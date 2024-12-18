@@ -1,4 +1,17 @@
-<div (click)="goBack()"> ← Retour page accueil</div>
+<div class="back-button" (click)="goBack()"> ← Retour page accueil</div>
+<!-- Bouton pour afficher la fenêtre modale -->
+<button (click)="toggleForm()">
+	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter un pays' }}
+  </button>
+  
+  <!-- Fenêtre modale pour le formulaire -->
+  <div class="modal-overlay" *ngIf="isFormVisible">
+	<div class="modal-content">
+	  <app-country-form></app-country-form>
+	  <button class="close-button" (click)="toggleForm()">Fermer</button>
+	</div>
+  </div>
+  
 <section>
   <div class="container">
     <div *ngFor="let countryData of jsonData; let i = index" (click)="onCountryClick(countryData.country)" style="position: relative;">

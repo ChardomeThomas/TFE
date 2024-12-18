@@ -1,0 +1,16 @@
+<form action="" class="country-form">
+	<div class="form-group">
+	  <label for="countryName">Nom du pays</label>
+	  <input [(ngModel)]="value"
+      #example="ngModel"
+      [class.is-invalid]="example.touched && example.invalid"type="text" placeholder="Nom du pays" name="countryName" id="countryName" required>
+	</div>
+  
+	<div class="form-group">
+	  <label for="countryFlag">Drapeau du pays</label>
+	  <input type="text" placeholder="URL du drapeau" name="countryFlag" id="countryFlag" required>
+	</div>
+  
+	<button type="submit" class="submit-button">Ajouter</button>
+  </form>
+  

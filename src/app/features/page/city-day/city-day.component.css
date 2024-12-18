@@ -1,7 +1,7 @@
 :host {
     display: block;
-    background-color: #DAC5AA; /* Utilise la couleur de ton choix */
-    height: 100%; /* Assure que l'élément prend toute la hauteur de la page */
+    background-color: #DAC5AA; 
+    height: 100%; 
     /* width:100vw; */
   }
 .mat-toolbar{
@@ -32,7 +32,7 @@ p{
       .timeline::before {
         content: '';
         position: absolute;
-        left: 30px; /* Ajustez cette valeur pour déplacer la ligne */
+        left: 30px; 
         top: 0;
         bottom: 0;
         width: 2px;
@@ -50,7 +50,7 @@ p{
       .timeline-item::before {
         content: '';
         position: absolute;
-        left: 21px; /* Ajustez cette valeur pour centrer le point */
+        left: 21px; 
         top: 0;
         width: 16px;
         height: 16px;
@@ -62,7 +62,7 @@ p{
       .day-card {
         display: flex;
         flex-direction: row;
-        margin-left: 60px; /* Espace pour le titre du jour */
+        margin-left: 60px; 
         padding: 20px;
         box-shadow: none;
         border: 1px solid #ddd;
@@ -76,7 +76,7 @@ p{
       
       .day-card p {
         margin: 0;
-        padding-left: 20px; /* Espace entre le titre et la description */
+        padding-left: 20px; 
         flex: 1;
       }
     
