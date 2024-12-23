@@ -1,0 +1,50 @@
+/* Style pour le formulaire */
+.day-form {
+	max-width: 400px; /* Limite la largeur du formulaire */
+	margin: 20px auto; /* Centre le formulaire horizontalement */
+	padding: 20px;
+	background-color: #f9f9f9; /* Arrière-plan léger */
+	border-radius: 8px; /* Coins arrondis */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet 3D */
+  }
+  
+  /* Groupes de champs du formulaire */
+  .form-group {
+	margin-bottom: 15px; /* Espacement entre chaque champ */
+  }
+  
+  /* Étiquettes pour les champs de saisie */
+  .form-group label {
+	display: block; /* Affiche les étiquettes comme blocs */
+	font-size: 14px;
+	margin-bottom: 5px; /* Espacement sous les étiquettes */
+	color: #333; /* Couleur de texte foncée */
+  }
+  
+  /* Champs de saisie */
+  .form-group input {
+	width: 100%; /* Champ de saisie occupe toute la largeur disponible */
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc; /* Bordure légère */
+	border-radius: 4px; /* Coins arrondis */
+	box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+  }
+  
+  /* Bouton de soumission */
+  .submit-button {
+	width: 100%; /* Bouton prend toute la largeur */
+	padding: 12px;
+	background-color: #4CAF50; /* Couleur de fond verte */
+	color: white;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  
+  .submit-button:hover {
+	background-color: #45a049; /* Couleur verte plus foncée au survol */
+  }
+  
+  

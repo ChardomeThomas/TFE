@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-city-form',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './city-form.component.html',
-  styleUrl: './city-form.component.css'
+  styleUrls: ['./city-form.component.css']
 })
 export class CityFormComponent {
-
+	value: string = '';
 }

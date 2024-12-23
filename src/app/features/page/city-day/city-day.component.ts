@@ -6,10 +6,12 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatButton } from '@angular/material/button';
+import { CityFormComponent } from '../../form/city-form/city-form.component'; // Vérifiez le chemin exact
+
 @Component({
   selector: 'app-city-day',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatToolbar, MatButton],
+  imports: [CommonModule, MatCardModule, MatToolbar, MatButton, CityFormComponent],
   templateUrl: './city-day.component.html',
   styleUrls: ['./city-day.component.css']
 })
@@ -17,6 +19,7 @@ export class CityDayComponent implements OnInit {
   country!: string;
   city!: string;
   cityData: Country | undefined;
+  isFormVisible = false; // Contrôle la visibilité de la fenêtre modale
   constructor(private route: ActivatedRoute, private jsonService: JsonService, private router: Router) {}
 
   ngOnInit() {
@@ -27,6 +30,22 @@ export class CityDayComponent implements OnInit {
     });
   }
 
+  toggleForm() {
+    this.isFormVisible = !this.isFormVisible;
+  }
+
+  onFormSubmitted(isSuccessful: boolean) {
+    if (isSuccessful) {
+      this.isFormVisible = false; // Cache le formulaire après validation
+      // Rafraîchir la liste ou mettre à jour l'affichage si nécessaire
+      this.refreshCountries();
+    }
+  }
+
+  refreshCountries() {
+    // Ajouter ici la logique pour recharger les données ou mettre à jour la liste des pays
+    console.log('Liste des pays mise à jour.');
+  }
   loadCityData() {
     this.jsonService.getJsonData().subscribe((data: Country[]) => {
       const countryData = data.find(country => country.country === this.country);

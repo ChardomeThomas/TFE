@@ -4,11 +4,12 @@ import { JsonService } from '../../../core/service/jsonService/json.service';
 import { Country, Jour } from '../../../interface/country.interface';
 import { CommonModule } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { DayFormComponent } from "../../form/day-form/day-form.component";
 
 @Component({
   selector: 'app-day-description',
   templateUrl: './day-description.component.html',
-  imports: [CommonModule, NgxSkeletonLoaderModule],
+  imports: [CommonModule, NgxSkeletonLoaderModule, DayFormComponent],
   standalone: true,
   styleUrls: ['./day-description.component.css']
 })
@@ -28,7 +29,24 @@ export class DayDescriptionComponent implements OnInit {
       this.loadDayData();
     });
   }
+  isFormVisible = false; // Contrôle la visibilité de la fenêtre modale
 
+  toggleForm() {
+    this.isFormVisible = !this.isFormVisible;
+  }
+
+  onFormSubmitted(isSuccessful: boolean) {
+    if (isSuccessful) {
+      this.isFormVisible = false; // Cache le formulaire après validation
+      // Rafraîchir la liste ou mettre à jour l'affichage si nécessaire
+      this.refreshCountries();
+    }
+  }
+
+  refreshCountries() {
+    // Ajouter ici la logique pour recharger les données ou mettre à jour la liste des pays
+    console.log('Liste des pays mise à jour.');
+  }
   loadDayData() {
     this.jsonService.getJsonData().subscribe((data: Country[]) => {
       const countryData = data.find(country => country.country === this.country);

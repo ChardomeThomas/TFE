@@ -30,6 +30,11 @@ export class PhotoDescriptionComponent implements OnInit {
       this.loadPhotoData();
     });
   }
+
+  refreshCountries() {
+    // Ajouter ici la logique pour recharger les données ou mettre à jour la liste des pays
+    console.log('Liste des pays mise à jour.');
+  }
   goBack() {
     this.router.navigate([`/${this.country}/${this.city}/${this.day}`]);
   }

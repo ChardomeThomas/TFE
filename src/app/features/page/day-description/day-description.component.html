@@ -1,4 +1,13 @@
 <div class="back-button" (click)="goBack()"><p>← retour liste des jours</p></div>
+<button (click)="toggleForm()">
+	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter une photo' }}
+  </button>
+  <div class="modal-overlay" *ngIf="isFormVisible">
+	<div class="modal-content">
+	  <app-day-form></app-day-form>
+	  <button class="close-button" (click)="toggleForm()">Fermer</button>
+	</div>
+  </div>
 <h1>{{ city }} {{ day }} , {{ country }}</h1>
 <div *ngIf="dayData">
   <h2>{{ dayData.date }}</h2>

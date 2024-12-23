@@ -2,7 +2,15 @@
   <mat-toolbar>
     <button mat-button (click)="goBack()">← retour liste des villes</button>
   </mat-toolbar>
-  
+  <button (click)="toggleForm()">
+	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter une journée' }}
+  </button>
+  <div class="modal-overlay" *ngIf="isFormVisible">
+	<div class="modal-content">
+	  <app-city-form></app-city-form>
+	  <button class="close-button" (click)="toggleForm()">Fermer</button>
+	</div>
+  </div>
   <ng-container *ngIf="cityData">
     <h1 class="title">{{ city }}</h1>
     <div class="timeline">
