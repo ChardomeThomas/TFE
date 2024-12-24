@@ -1,11 +1,51 @@
-<section class="button">
-<div class="clickable-image" (click)="navigateToMap()">
-    <img src="assets/image/world.png" alt="Map Image">
-    <div class="text-overlay">Go to Leaflet Map</div>
-  </div>
+<app-image-background>
+  <section class="title">
+    <h1>Découvrez nos aventures</h1>
+    <p class="font-200">aux quatres coins du globe...</p>
+  </section>
+  <section class="button">
+    <div class="clickable-image" (click)="navigateToCountryList()">
+      <mat-card class="example-card-left" appearance="outlined">
+        <img
+          mat-card-image
+          class="card-image"
+          src="../../../assets/image/country.jpg"
+          alt="paysage avec 2personnes"
+        />
+        <section class="left-card">
+          <mat-card-content class="left-card-content">
+            <h4 class="bold-text">Nos aventures par pays</h4>
+            <p class="font-100 card-text">
+              clique ici pour voir tous les pays que j'ai parcouru
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button class="button-left" (click)="navigateToCountryList()">
+              Voir les pays
+            </button>
+          </mat-card-actions>
+        </section>
+      </mat-card>
+    </div>
 
-  <div class="clickable-image" (click)="navigateToCountryList()">
-    <img src="assets/image/country.png" alt="Country Image">
-    <div class="text-overlay">Go to Country List</div>
-  </div>
-</section>
+    <div class="clickable-image" (click)="navigateToMap()">
+      <mat-card class="example-card-right" appearance="outlined">
+        <img
+          mat-card-image
+          class="card-image"
+          src="../../../assets/image/world.jpg"
+          alt="paysage avec 2personnes"
+        />
+        <mat-card-content class="right-card-content">
+          <h4 class="bold-text">Sélection sur carte</h4>
+          <p class="font-100 card-text">Prochainement disponible</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button class="button-right" (click)="navigateToMap()">
+            Voir la carte
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+</app-image-background>

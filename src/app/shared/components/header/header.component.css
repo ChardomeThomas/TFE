@@ -1,29 +1,92 @@
 
+body{
+	color:rgb(2,48,74);
+	z-index:1;
+}
+.logo{
+	z-index:5;
+}
 .logo img{
     display: block;
     margin: auto;
-    width: 100px;
+    width: 300px;
     height: 100px;
+    cursor:pointer;
     top:0;
     left:0;
     display: block;
-    cursor:pointer;
     margin-bottom:40px;
+	margin-left:50px;
+	color:rgb(2,48,74);
+		
 }
-
+.accueil_btn{
+	right:0;
+	top:0;
+	cursor:pointer;
+	margin-right:25px;
+}
+.connexion_btn{
+	right:0;
+	top:0;
+	cursor:pointer;
+	margin-left:25px;
+	border-radius:25px;
+	padding: 10px 25px;
+	color:white;
+	background-color: rgb(2,48,74);
+}
 @media only screen and (min-width: 600px) {
-    .container {
+
+	.container {
+		padding-top:20px;
+		display:flex;
+		justify-content: space-between;
+		align-items: center;
         /* width: 100vw; Assure que l'élément prend toute la hauteur de la page */
-        background-color: #DAC5AA; /* Utilise la couleur de ton choix */
         padding-bottom:30px;
       }
     .logo img{
         margin:0;
-        width: 200px;
-        height: 200px;
+        width: 150px;
+        height: 100%;
         top:0;
         left:0;
+		margin-left:25px;
+		margin-top:25px;
         display: block;
         cursor:pointer;
     }
+	.accueil_btn {
+		position: relative;
+		right: 0;
+		top: 0;
+		cursor: pointer;
+		margin-right: 25px;
+	  }
+	  
+	  .accueil {
+		position: relative;
+	  }
+	  
+	  .accueil::after {
+		content: ''; 
+		position: absolute;
+		bottom: -5px; 
+		left: 50%;
+		transform: translateX(-50%); 
+		border-bottom: 3px solid lightseagreen; 
+		width: 15px;
+	  }
+	  
+	.connexion_btn{
+		right:0;
+		top:0;
+		cursor:pointer;
+		margin-left:25px;
+		border-radius:25px;
+		padding: 10px 25px;
+		color:white;
+		background-color: rgb(2,48,74);
+	}
  }

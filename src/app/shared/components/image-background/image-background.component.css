@@ -1,0 +1,18 @@
+.image-background {
+	position: relative;
+	display:block;
+	/* background-image: url('../../../../assets/image/Background.jpg'); */
+	height:66vh;
+	width: 100%; /* Prend toute la largeur de l'écran */
+	
+  }
+  .background-img{
+	height:100%;
+	width:100%;
+	background-size: cover;
+	overflow:hidden;
+	position: absolute;
+	object-fit: cover;
+	z-index:0;
+  }
+  

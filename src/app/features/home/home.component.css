@@ -1,58 +1,113 @@
-/* Styles communs (s'appliquent à tous les écrans) */
-.button {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 
-.clickable-image {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  margin: 10px;
-}
-
-.clickable-image img {
-  display: block;
-}
-
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-/* Mobile (par défaut) */
-.clickable-image img {
-  width: 200px;
-  height: 200px;
-  font-size: 20px;
-}
-
-/* Tablette */
-@media (min-width: 768px) {
-  .clickable-image img {
-    width: 250px;
-    height: 250px;
+h1, h4, p {
+	margin: 0;
+	padding: 0;
   }
-  .text-overlay {
-    font-size: 24px;
+  .title {
+	position: relative;  /* Permet d'utiliser le pseudo-élément */
+	text-align: center;
+	padding: 50px 20px;  /* Un peu d'espace autour du texte */
+	z-index: 2; /* Assure que le texte est visible au-dessus de l'image */
+	font-size:36px;
+	width:100%;
+	height:200px;
   }
+  
+  .title h1, .title p {
+	position: relative;  /* Assurer que le texte est correctement superposé sur l'image */
+	z-index: 3;  /* Mettre le texte au-dessus de l'image */
+  }
+  
+  /* Style de l'image de fond */
+  .title::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-image: url('../../../assets/image/shadow_title.png'); /* Ton image de nuage */
+	background-position: center;
+	background-size: 40%;  /* Utilise 'contain' pour garder l'image à sa taille naturelle sans la déformer */
+	background-repeat: no-repeat;  /* Empêche l'image de se répéter */
+	z-index: 1;  /* Placer l'image derrière le texte */
+  }
+  
+.button{
+	/* margin-top:100px; */
+	display:flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+	margin-right:25px;
+	
 }
+.example-card-left{
+	position: relative;
+	/* max-width: 400px; */
+	height:500px;
+	width: 900px;
+	background-color: white;
+	margin-right:25px;
+  }
+  .card-image{
+	height:50%;
+	width: 100%;
+	object-fit:cover;
+  }
+  .left-card{
+	margin-left:50px;
+	margin-top:20px;
+  }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  .clickable-image img {
-    width: 500px;
-    height: 500px;
+  .example-card-right{
+	position: relative;
+	/* max-width: 400px; */
+	height:500px;
+	width: 400px;
+	background-color: white;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
   }
-  .text-overlay {
-    font-size: 28px;
+  mat-card{
+	border-radius: 10px;
+	border:none;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1);
   }
+  .left-card-content{
+	margin-top:20px;
+  }
+  .right-card-content{
+	margin-top:60px;
+	text-align: center;
+	align-items: center;
+  }
+  .button-left{
+	background-color:lightblue;
+	color:white !important;
+	border-radius:25px;
+	padding: 10px 20px;
+	margin-top:10px;
+  }
+.button-left:hover{
+	background-color:lightskyblue;
 }
+  .button-right{
+	background-color:lightcoral;
+	color:white !important;
+	border-radius:25px;
+	padding: 10px 20px;
+	margin-top:10px;
+  }
+  .button-right:hover{
+	background-color:red;
+}
+  .bold-text{
+	font-weight: bold;
+	font-size:20px;
+  }
+  .card-text{
+	margin-top:10px;
+	font-size:16px;
+  }
