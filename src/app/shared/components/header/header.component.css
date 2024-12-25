@@ -33,18 +33,23 @@ body{
 	margin-left:25px;
 	border-radius:25px;
 	padding: 10px 25px;
+	border:none;
 	color:white;
 	background-color: rgb(2,48,74);
+}
+.connexion_btn:hover{
+	background-color: rgb(2, 88, 149);;
 }
 @media only screen and (min-width: 600px) {
 
 	.container {
-		padding-top:20px;
+		
+		padding:20px 60px;
 		display:flex;
 		justify-content: space-between;
 		align-items: center;
         /* width: 100vw; Assure que l'élément prend toute la hauteur de la page */
-        padding-bottom:30px;
+		/* margin: 0px 60px; */
       }
     .logo img{
         margin:0;
@@ -79,14 +84,15 @@ body{
 		width: 15px;
 	  }
 	  
-	.connexion_btn{
+	/* .connexion_btn{
 		right:0;
 		top:0;
 		cursor:pointer;
 		margin-left:25px;
 		border-radius:25px;
 		padding: 10px 25px;
+		border:none;
 		color:white;
 		background-color: rgb(2,48,74);
-	}
+	} */
  }
