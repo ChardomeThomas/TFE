@@ -28,7 +28,7 @@ h1, h4, p {
 	bottom: 0;
 	background-image: url('../../../assets/image/shadow_title.png'); /* Ton image de nuage */
 	background-position: center;
-	background-size: 40%;  /* Utilise 'contain' pour garder l'image à sa taille naturelle sans la déformer */
+	background-size: 34%;  /* Utilise 'contain' pour garder l'image à sa taille naturelle sans la déformer */
 	background-repeat: no-repeat;  /* Empêche l'image de se répéter */
 	z-index: 1;  /* Placer l'image derrière le texte */
   }
