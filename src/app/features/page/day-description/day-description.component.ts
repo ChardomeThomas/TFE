@@ -4,12 +4,12 @@ import { JsonService } from '../../../core/service/jsonService/json.service';
 import { Country, Jour } from '../../../interface/country.interface';
 import { CommonModule } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { DayFormComponent } from "../../form/day-form/day-form.component";
+import { ImageBackgroundComponent } from '../../../shared/components/image-background/image-background.component';
 
 @Component({
   selector: 'app-day-description',
   templateUrl: './day-description.component.html',
-  imports: [CommonModule, NgxSkeletonLoaderModule, DayFormComponent],
+  imports: [CommonModule, NgxSkeletonLoaderModule, ImageBackgroundComponent],
   standalone: true,
   styleUrls: ['./day-description.component.css']
 })

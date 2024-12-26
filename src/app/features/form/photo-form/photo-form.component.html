@@ -1,4 +1,5 @@
 <form action="" class="photo-form">
+	<p>photo</p>
 	<div class="form-group">
 	  <label for="photoName">Nom du pays</label>
 	  <input [(ngModel)]="value"
@@ -7,10 +8,19 @@
 	</div>
   
 	<div class="form-group">
-	  <label for="photoFlag">Drapeau du pays</label>
-	  <input type="text" placeholder="URL du drapeau" name="photoFlag" id="photoFlag" required>
+	  <label for="photo">photo</label>
+	  <input type="text" placeholder="URL du drapeau" name="photo" id="photo" required>
 	</div>
-  
+	<div class="form-group">
+		<label for="photoDescription">Description de la photo</label>
+		<textarea 
+		  placeholder="Description de la photo" 
+		  name="photoDescription" 
+		  id="photoDescription" 
+		  rows="4"
+		  cols="50" 
+		  required></textarea>
+	  </div>
 	<button type="submit" class="submit-button">Ajouter</button>
   </form>
   

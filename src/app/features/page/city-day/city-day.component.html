@@ -1,18 +1,13 @@
-
-  <mat-toolbar>
+<app-image-background> 
+  <!-- <mat-toolbar>
     <button mat-button (click)="goBack()">← retour liste des villes</button>
-  </mat-toolbar>
-  <button (click)="toggleForm()">
-	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter une journée' }}
-  </button>
-  <div class="modal-overlay" *ngIf="isFormVisible">
-	<div class="modal-content">
-	  <app-city-form></app-city-form>
-	  <button class="close-button" (click)="toggleForm()">Fermer</button>
-	</div>
-  </div>
-  <ng-container *ngIf="cityData">
-    <h1 class="title">{{ city }}</h1>
+  </mat-toolbar> -->
+  <section class="title">
+    <h1>Découvrez nos journées</h1>
+    <p class="font-100">ainsi qu'une légère description...</p>
+  </section>
+  <ng-container  *ngIf="cityData">
+    <h1 class="city-title">{{ city }}</h1>
     <div class="timeline">
       <div *ngFor="let jour of cityData.jours; let i = index" class="timeline-item">
         <mat-card (click)="onDayClick(country, city, jour.jour)" class="day-card">
@@ -23,3 +18,4 @@
     </div>
   </ng-container>
   
+</app-image-background> 

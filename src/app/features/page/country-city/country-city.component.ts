@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonService } from '../../../core/service/jsonService/json.service';
 import { Country } from '../../../interface/country.interface';
-import { CountryFormComponent } from "../../form/country-form/country-form.component";
+import { ImageBackgroundComponent } from '../../../shared/components/image-background/image-background.component';
 
 @Component({
   selector: 'app-country-city',
   standalone: true,
-  imports: [CommonModule, CountryFormComponent],
+  imports: [CommonModule, ImageBackgroundComponent],
   templateUrl: './country-city.component.html',
   styleUrls: ['./country-city.component.css']
 })

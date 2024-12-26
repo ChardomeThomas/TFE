@@ -1,9 +1,34 @@
 <div class="container">
-<div class="logo" >
-    <img (click)="onLogoClick()" src="assets/image/logo.png" alt="Logo wandering soul" srcset="">
-</div>
-<div class="accueil_btn">
-	<a class="accueil" (click)="onLogoClick()" >Accueil</a>
-	<button class="connexion_btn">Se connecter</button>
-</div>
+  <div class="logo">
+    <img (click)="onLogoClick()" src="assets/image/logo.png" alt="Logo wandering soul">
+  </div>
+  
+  <div class="accueil_btn">
+    <a class="accueil" (click)="onLogoClick()">Accueil</a>
+    
+    <button *ngIf="!isLoggedIn()" class="connexion_btn" (click)="login()">Se connecter</button>
+    <button *ngIf="isLoggedIn()" class="connexion_btn" (click)="logout()">Se déconnecter</button>
+    
+    <!-- Bouton City Form visible uniquement si connecté et sur la page :country/city sans /Jour -->
+    <button *ngIf="isOnCountryCityPage() && isLoggedIn()" class="form_btn connexion_btn" (click)="openForm('city')">City Form</button>
+
+    <!-- Bouton Day Form visible uniquement si connecté et sur la page :country/city/JourX sans /photo -->
+    <button *ngIf="isOnDayPage() && isLoggedIn()" class="form_btn connexion_btn" (click)="openForm('day')">Day Form</button>
+
+    <!-- Bouton Photo Form visible uniquement si connecté et sur la page :country/city/JourX/photo -->
+    <button *ngIf="isOnPhotoPage() && isLoggedIn()" class="form_btn connexion_btn" (click)="openForm('photo')">Photo Form</button>
+    
+    <button *ngIf="currentPage === '/country-list' && isLoggedIn()" class="form_btn connexion_btn" (click)="openForm('country')">Country Form</button>
+    
+    <!-- Fenêtre modale -->
+    <div class="modal-overlay" *ngIf="currentForm !== ''">
+      <div class="modal-content">
+        <app-city-form *ngIf="currentForm === 'city'"></app-city-form>
+        <app-country-form *ngIf="currentForm === 'country'"></app-country-form>
+        <app-day-form *ngIf="currentForm === 'day'"></app-day-form>
+        <app-photo-form *ngIf="currentForm === 'photo'"></app-photo-form>
+        <button class="close-button" (click)="closeForm()">Fermer</button>
+      </div>
+    </div>
+  </div>
 </div>

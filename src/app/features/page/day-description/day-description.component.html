@@ -1,5 +1,6 @@
-<div class="back-button" (click)="goBack()"><p>← retour liste des jours</p></div>
-<button (click)="toggleForm()">
+<!-- <div class="back-button" (click)="goBack()"><p>← retour liste des jours</p></div>-->
+ <app-image-background>
+<!-- <button (click)="toggleForm()">
 	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter une photo' }}
   </button>
   <div class="modal-overlay" *ngIf="isFormVisible">
@@ -7,14 +8,19 @@
 	  <app-day-form></app-day-form>
 	  <button class="close-button" (click)="toggleForm()">Fermer</button>
 	</div>
-  </div>
+  </div> -->
+  <section class="title">
+    <h1>Découvrez Les photos</h1>
+    <p class="font-200">de notre journée...</p>
+  </section>
+  <section class="content">
 <h1>{{ city }} {{ day }} , {{ country }}</h1>
 <div *ngIf="dayData">
   <h2>{{ dayData.date }}</h2>
-  <p>{{ dayData.description }}</p>
+  <h4 >{{ dayData.description }}</h4>
   <div class="container">
     <div *ngFor="let photo of dayData.photos; let i = index" (click)="onPhotoClick(i)">
-      <p>{{ photo.description }}</p>
+      <p class="font-300">{{ photo.description }}</p>
       
       <!-- Ngx Skeleton Loader -->
       <ngx-skeleton-loader 
@@ -36,3 +42,5 @@
 <div *ngIf="!dayData">
   <p>No data found for Day {{ day }} in {{ city }}, {{ country }}.</p>
 </div>
+</section>
+</app-image-background> 

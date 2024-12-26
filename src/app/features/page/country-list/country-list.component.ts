@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { Country } from '../../../interface/country.interface';
 import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { CountryFormComponent } from '../../form/country-form/country-form.component';
 import { ImageBackgroundComponent } from "../../../shared/components/image-background/image-background.component";
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-country-list',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, CountryFormComponent, ImageBackgroundComponent],
+  imports: [CommonModule, MatButtonModule, ImageBackgroundComponent, MatCardModule, MatButtonModule],
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.css']
 })

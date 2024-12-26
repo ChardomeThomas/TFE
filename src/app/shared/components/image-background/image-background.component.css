@@ -3,7 +3,7 @@
 	display:block;
 	/* background-image: url('../../../../assets/image/Background.jpg'); */
 	height:100vh;
-	overflow:hidden;
+	/* overflow:hidden; */
 	/* height:100%; */
 	width: 100%; /* Prend toute la largeur de l'écran */
 	
@@ -15,3 +15,9 @@
 	z-index:0;
   }
   
+  @media (max-width: 1600px) {
+	.background-img {
+	  object-fit: cover; /* Appliquer 'cover' de 1600px à 0px */
+	  width: 100%;
+	}
+}

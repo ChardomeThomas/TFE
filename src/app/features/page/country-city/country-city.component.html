@@ -1,15 +1,13 @@
-<div class="back-button" (click)="goBack()">
+<app-image-background>
+  <section class="title">
+    <h1>Découvrez Les pays</h1>
+    <p class="font-200">Que nous avons visités...</p>
+  </section>
+  <section class="container">
+<!-- <div class="back-button" (click)="goBack()">
   <p>← Retour à la liste des pays</p>
-</div>
-<button (click)="toggleForm()">
-	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter une ville' }}
-  </button>
-  <div class="modal-overlay" *ngIf="isFormVisible">
-	<div class="modal-content">
-	  <app-country-form></app-country-form>
-	  <button class="close-button" (click)="toggleForm()">Fermer</button>
-	</div>
-  </div>
+</div> -->
+
 <h1 *ngIf="countryData" class="country-title">
   Cities in {{ countryData.country }}:
 </h1>
@@ -23,3 +21,5 @@
 <p *ngIf="!countryData" class="no-data">
   No data found for the country.
 </p>
+</section>
+</app-image-background>

@@ -1,24 +1,44 @@
 <app-image-background>
-<div class="back-button" (click)="goBack()"> ← Retour page accueil</div>
+<!-- <div class="back-button" (click)="goBack()"> ← Retour page accueil</div> -->
 <!-- Bouton pour afficher la fenêtre modale -->
-<button (click)="toggleForm()">
-	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter un pays' }}
-  </button>
-  
-  <!-- Fenêtre modale pour le formulaire -->
-  <div class="modal-overlay" *ngIf="isFormVisible">
-	<div class="modal-content">
-	  <app-country-form></app-country-form>
-	  <button class="close-button" (click)="toggleForm()">Fermer</button>
-	</div>
-  </div>
-  
-<section>
-  <div class="container">
+  <section class="title">
+    <h1>Découvrez Les villes</h1>
+    <p class="font-200">Que nous avons visitées...</p>
+  </section>
+  <section class="button">
+    <div class="clickable-image"  *ngFor="let countryData of jsonData; let i = index" (click)="onCountryClick(countryData.country)">
+      <mat-card class="example-card" appearance="outlined">
+        <p class="city-title">{{countryData.country}}</p>
+        <div class="test">
+        <img
+          mat-card-image
+          class="card-image"
+          [src]="countryData.drapeau" alt="{{ countryData.country }}"  
+        />
+        <mat-card-actions>
+          <button mat-button class="card-button" (click)="onCountryClick(countryData.country)">
+            Visiter
+          </button>
+        </mat-card-actions>
+      </div>
+        <section class="card">
+          <mat-card-content class="card-content">
+            <!-- <h4 class="bold-text">Nos aventures à : {{countryData.country}}</h4> -->
+             <img class="mini-img" [src]="countryData.drapeau" alt="{{ countryData.country }}"  >
+            <p class="font-400 card-text">
+              clique ici pour voir tous les villes que j'ai parcourues
+            </p>
+          </mat-card-content>
+
+        </section>
+      </mat-card>
+    </div>
+
+  </section>
+  <!-- <div class="container">
     <div *ngFor="let countryData of jsonData; let i = index" (click)="onCountryClick(countryData.country)" style="position: relative;">
       <div class="countryName">{{ countryData.country }}</div>
       <img class="country_flag" [src]="countryData.drapeau" alt="{{ countryData.country }}">
     </div>
-  </div>
-</section>
+  </div> -->
 </app-image-background>

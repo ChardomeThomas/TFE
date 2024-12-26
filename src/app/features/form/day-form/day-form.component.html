@@ -1,14 +1,21 @@
 <form action="" class="day-form">
 	<div class="form-group">
-	  <label for="dayName">Nom du pays</label>
+	  <label for="dayName">Jour: </label>
 	  <input [(ngModel)]="value"
-      #example="ngModel"
-      [class.is-invalid]="example.touched && example.invalid"type="text" placeholder="Nom du pays" name="dayName" id="dayName" required>
+		#example="ngModel"
+		[class.is-invalid]="example.touched && example.invalid" 
+		type="text" placeholder="Jour: " name="dayName" id="dayName" required>
 	</div>
   
 	<div class="form-group">
-	  <label for="dayFlag">Drapeau du pays</label>
-	  <input type="text" placeholder="URL du drapeau" name="dayFlag" id="dayFlag" required>
+	  <label for="dayDescription">Description de la journée</label>
+	  <textarea 
+		placeholder="Description de la journée" 
+		name="dayDescription" 
+		id="dayDescription" 
+		rows="4"
+		cols="50" 
+		required></textarea>
 	</div>
   
 	<button type="submit" class="submit-button">Ajouter</button>

@@ -1,15 +1,12 @@
 <form action="" class="city-form">
 	<div class="form-group">
-	  <label for="cityName">Nom du pays</label>
+	  <label for="cityName">Nom de la ville</label>
 	  <input [(ngModel)]="value"
       #example="ngModel"
-      [class.is-invalid]="example.touched && example.invalid"type="text" placeholder="Nom du pays" name="cityName" id="cityName" required>
+      [class.is-invalid]="example.touched && example.invalid"type="text" placeholder="Nom de la ville" name="cityName" id="cityName" required>
 	</div>
   
-	<div class="form-group">
-	  <label for="cityFlag">Drapeau du pays</label>
-	  <input type="text" placeholder="URL du drapeau" name="cityFlag" id="cityFlag" required>
-	</div>
+
   
 	<button type="submit" class="submit-button">Ajouter</button>
   </form>

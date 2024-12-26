@@ -7,11 +7,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatButton } from '@angular/material/button';
 import { CityFormComponent } from '../../form/city-form/city-form.component'; // Vérifiez le chemin exact
+import { ImageBackgroundComponent } from '../../../shared/components/image-background/image-background.component';
 
 @Component({
   selector: 'app-city-day',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatToolbar, MatButton, CityFormComponent],
+  imports: [CommonModule, MatCardModule, MatToolbar, MatButton, CityFormComponent, ImageBackgroundComponent],
   templateUrl: './city-day.component.html',
   styleUrls: ['./city-day.component.css']
 })
