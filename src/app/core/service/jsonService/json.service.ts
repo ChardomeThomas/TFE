@@ -7,10 +7,16 @@ import { Country } from '../../../interface/country.interface';
   providedIn: 'root'
 })
 export class JsonService {
-  private jsonUrl = 'assets/json/data.json';
+  // private jsonUrl = 'assets/json/data.json';
+  private countries = 'https://thomas-chardome.be/ajout-json/countries.json';
+  private cities = 'https://thomas-chardome.be/ajout-json/cities.json';
   constructor(private http: HttpClient) { }
 
-  getJsonData(): Observable<any> {
-    return this.http.get<Country[]>(this.jsonUrl);
+  getCountries(): Observable<any> {
+    return this.http.get<Country[]>(this.countries);
+  }
+
+  getCities(): Observable<any> {
+    return this.http.get<any>(this.cities);
   }
 }

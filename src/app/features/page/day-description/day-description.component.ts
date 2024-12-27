@@ -48,7 +48,7 @@ export class DayDescriptionComponent implements OnInit {
     console.log('Liste des pays mise à jour.');
   }
   loadDayData() {
-    this.jsonService.getJsonData().subscribe((data: Country[]) => {
+    this.jsonService.getCountries().subscribe((data: Country[]) => {
       const countryData = data.find(country => country.country === this.country);
       if (countryData) {
         const cityData = countryData.villes[this.city];

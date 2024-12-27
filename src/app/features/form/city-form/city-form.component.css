@@ -47,4 +47,12 @@
 	background-color: #45a049; /* Couleur verte plus foncée au survol */
   }
   
+  .is-invalid {
+	border: 1px solid red;
+  }
+  
+  .invalid-feedback {
+	color: red;
+	font-size: 0.9rem;
+  }
   

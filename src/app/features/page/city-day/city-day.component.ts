@@ -48,7 +48,7 @@ export class CityDayComponent implements OnInit {
     console.log('Liste des pays mise à jour.');
   }
   loadCityData() {
-    this.jsonService.getJsonData().subscribe((data: Country[]) => {
+    this.jsonService.getCountries().subscribe((data: Country[]) => {
       const countryData = data.find(country => country.country === this.country);
       if (countryData) {
         this.cityData = countryData.villes[this.city];

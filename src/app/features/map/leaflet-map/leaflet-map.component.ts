@@ -60,7 +60,7 @@ export class LeafletMapComponent implements AfterViewInit {
   }
 
   private loadVisitedCountries(): void {
-    this.jsonService.getJsonData().subscribe(
+    this.jsonService.getCountries().subscribe(
       (data: Country[]) => {
         this.jsonData = data;  
         data.forEach(country => this.visitedCountries.add(country.country));

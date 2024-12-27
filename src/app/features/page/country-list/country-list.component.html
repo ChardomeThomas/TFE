@@ -6,17 +6,17 @@
     <p class="font-200">Que nous avons visitées...</p>
   </section>
   <section class="button">
-    <div class="clickable-image"  *ngFor="let countryData of jsonData; let i = index" (click)="onCountryClick(countryData.country)">
+    <div class="clickable-image"  *ngFor="let countryData of jsonData; let i = index" (click)="onCountryClick(countryData.name)">
       <mat-card class="example-card" appearance="outlined">
-        <p class="city-title">{{countryData.country}}</p>
+        <p class="city-title">{{countryData.name}}</p>
         <div class="test">
         <img
           mat-card-image
           class="card-image"
-          [src]="countryData.drapeau" alt="{{ countryData.country }}"  
+          [src]="countryData.flag" alt="{{ countryData.name }}"  
         />
         <mat-card-actions>
-          <button mat-button class="card-button" (click)="onCountryClick(countryData.country)">
+          <button mat-button class="card-button" (click)="onCountryClick(countryData.name)">
             Visiter
           </button>
         </mat-card-actions>
@@ -24,7 +24,7 @@
         <section class="card">
           <mat-card-content class="card-content">
             <!-- <h4 class="bold-text">Nos aventures à : {{countryData.country}}</h4> -->
-             <img class="mini-img" [src]="countryData.drapeau" alt="{{ countryData.country }}"  >
+             <img class="mini-img" [src]="countryData.flag" alt="{{ countryData.name }}"  >
             <p class="font-400 card-text">
               clique ici pour voir tous les villes que j'ai parcourues
             </p>

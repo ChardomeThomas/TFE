@@ -39,7 +39,7 @@ export class PhotoDescriptionComponent implements OnInit {
     this.router.navigate([`/${this.country}/${this.city}/${this.day}`]);
   }
   loadPhotoData() {
-    this.jsonService.getJsonData().subscribe((data: Country[]) => {
+    this.jsonService.getCountries().subscribe((data: Country[]) => {
       const countryData = data.find(country => country.country === this.country);
       if (countryData) {
         const cityData = countryData.villes[this.city];

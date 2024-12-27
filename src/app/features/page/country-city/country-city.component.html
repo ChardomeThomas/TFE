@@ -4,22 +4,22 @@
     <p class="font-200">Que nous avons visités...</p>
   </section>
   <section class="container">
-<!-- <div class="back-button" (click)="goBack()">
-  <p>← Retour à la liste des pays</p>
-</div> -->
+    <h1 *ngIf="countryData" class="country-title">
+      Cities in {{ countryData.name }}:
+    </h1>
 
-<h1 *ngIf="countryData" class="country-title">
-  Cities in {{ countryData.country }}:
-</h1>
+    <ul *ngIf="countryData" class="city-list">
+      <li *ngFor="let city of cities" class="city-item">
+        <a (click)="onCountryCityClick(countryData.name, city.name)" class="city-link">
+          <div class="city-info">
+            <span class="city-name">{{ city.name }}</span> <!-- Affichage du nom de la ville -->
+          </div>
+        </a>
+      </li>
+    </ul>
 
-<ul *ngIf="countryData" class="city-list">
-  <li *ngFor="let city of getCityNames(countryData.villes)" class="city-item">
-    <a (click)="onCountryCityClick(countryData.country, city)" class="city-link">{{ city }}</a>
-  </li>
-</ul>
-
-<p *ngIf="!countryData" class="no-data">
-  No data found for the country.
-</p>
-</section>
+    <p *ngIf="!countryData" class="no-data">
+      No data found for the country.
+    </p>
+  </section>
 </app-image-background>

@@ -4,7 +4,11 @@ export interface Country {
     jours: Jour[];
     drapeau: string;
   }
-  
+  export interface Country2 {
+    countryId: number;
+    name: string;
+    flag: string;
+  }
   export interface Jour {
     jour: number;
     date: string;

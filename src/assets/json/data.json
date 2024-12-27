@@ -1,6 +1,7 @@
 [
   {
     "country": "Hong Kong",
+    "countryId": 1,
     "drapeau": "/assets/image/drapeau/hongKong.png",
     "villes": {
       "Hong Kong": {
@@ -3028,6 +3029,7 @@
   },
   {
     "country": "Allemagne",
+    "countryId": 2,
     "drapeau": "/assets/image/drapeau/allemagne.png",
     "villes": {
       "Hambourg": {

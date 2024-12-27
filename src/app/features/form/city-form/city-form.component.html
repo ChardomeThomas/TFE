@@ -1,13 +1,22 @@
-<form action="" class="city-form">
+<form [formGroup]="cityForm" (ngSubmit)="submit()" class="city-form">
 	<div class="form-group">
 	  <label for="cityName">Nom de la ville</label>
-	  <input [(ngModel)]="value"
-      #example="ngModel"
-      [class.is-invalid]="example.touched && example.invalid"type="text" placeholder="Nom de la ville" name="cityName" id="cityName" required>
+	  <input
+		formControlName="name"
+		[class.is-invalid]="cityForm.get('name')?.touched && cityForm.get('name')?.invalid"
+		type="text"
+		placeholder="Nom de la ville"
+		name="name" 
+		id="cityName"
+		required
+	  />
+	  <div *ngIf="cityForm.get('name')?.touched && cityForm.get('name')?.invalid" class="invalid-feedback">
+		<small *ngIf="cityForm.get('name')?.hasError('required')">Le nom de la ville est requis.</small>
+		<small *ngIf="cityForm.get('name')?.hasError('minlength')">Le nom de la ville est trop court.</small>
+		<small *ngIf="cityForm.get('name')?.hasError('maxlength')">Le nom de la ville est trop long.</small>
+	  </div>
 	</div>
-  
-
-  
-	<button type="submit" class="submit-button">Ajouter</button>
+	
+	<button type="submit" class="submit-button" [disabled]="cityForm.invalid">Ajouter</button>
   </form>
   
