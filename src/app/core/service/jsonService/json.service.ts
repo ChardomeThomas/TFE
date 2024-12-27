@@ -10,6 +10,7 @@ export class JsonService {
   // private jsonUrl = 'assets/json/data.json';
   private countries = 'https://thomas-chardome.be/ajout-json/countries.json';
   private cities = 'https://thomas-chardome.be/ajout-json/cities.json';
+  private days = 'https://thomas-chardome.be/ajout-json/days.json';
   constructor(private http: HttpClient) { }
 
   getCountries(): Observable<any> {
@@ -18,5 +19,9 @@ export class JsonService {
 
   getCities(): Observable<any> {
     return this.http.get<any>(this.cities);
+  }
+
+  getDays(): Observable<any> {
+    return this.http.get<any>(this.days);
   }
 }

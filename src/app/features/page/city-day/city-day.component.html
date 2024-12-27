@@ -1,21 +1,36 @@
-<app-image-background> 
-  <!-- <mat-toolbar>
-    <button mat-button (click)="goBack()">← retour liste des villes</button>
-  </mat-toolbar> -->
+<app-image-background>
   <section class="title">
     <h1>Découvrez nos journées</h1>
     <p class="font-100">ainsi qu'une légère description...</p>
   </section>
-  <ng-container  *ngIf="cityData">
+
+  <!-- Vérifie si les données de la ville sont disponibles -->
+  <div *ngIf="days && days.length > 0">
     <h1 class="city-title">{{ city }}</h1>
-    <div class="timeline">
-      <div *ngFor="let jour of cityData.jours; let i = index" class="timeline-item">
-        <mat-card (click)="onDayClick(country, city, jour.jour)" class="day-card">
-          <h2>Jour {{ jour.jour }}</h2>
-          <p>{{ jour.description }}</p>
-        </mat-card>
+    <div class="container">
+      <!-- Itère sur les jours de la ville -->
+      <div 
+        *ngFor="let jour of days; let i = index" 
+        class="card" 
+        [ngClass]="{'card-odd': i % 2 !== 0, 'card-even': i % 2 === 0}" 
+        (click)="onCityDayClick(jour.id_day)"
+      >
+        <div class="card_image image">
+          <img 
+            src="https://media.istockphoto.com/id/629604122/fr/photo/paysage-urbain-hongkongais-et-junkboat-au-cr%C3%A9puscule.jpg?s=612x612&w=0&k=20&c=UkJFUwXcSDgZ6NAxMVD87WHZgiAX1RtaFsh7dxv9eK0=" 
+            alt=""
+          >
+        </div>
+        <div class="card_description">
+          <p class="day_number">{{ jour.day_number }}</p>
+          <p class="description">{{ jour.description }}</p>
+        </div>
       </div>
     </div>
-  </ng-container>
-  
-</app-image-background> 
+  </div>
+
+  <!-- Si aucune journée n'est disponible pour cette ville -->
+  <div *ngIf="days.length === 0">
+    <p>Aucune journée disponible pour cette ville pour le moment.</p>
+  </div>
+</app-image-background>

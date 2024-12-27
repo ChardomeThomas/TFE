@@ -9,6 +9,12 @@ export interface Country {
     name: string;
     flag: string;
   }
+  export interface Jour2{
+    id_day: number;
+    day_number: number;
+    id_city: number;
+    description:string;
+  }
   export interface Jour {
     jour: number;
     date: string;
