@@ -31,6 +31,11 @@
 	box-sizing: border-box; /* Inclut le padding dans la largeur totale */
   }
   
+  /* Bordure rouge pour les champs invalides */
+  .is-invalid {
+	border: 1px solid red;
+  }
+  
   /* Bouton de soumission */
   .submit-button {
 	width: 100%; /* Bouton prend toute la largeur */
@@ -42,9 +47,18 @@
 	font-size: 16px;
 	cursor: pointer;
   }
-
+  
   .submit-button:hover {
 	background-color: #45a049; /* Couleur verte plus foncée au survol */
   }
   
+  .submit-button:disabled {
+	background-color: #ddd; /* Désactive le bouton avec une couleur grise */
+	cursor: not-allowed;
+  }
+  
+  /* Messages d'erreur */
+  .text-danger {
+	color: red; /* Texte des erreurs en rouge */
+  }
   

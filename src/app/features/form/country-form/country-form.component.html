@@ -6,7 +6,6 @@
 		[class.is-invalid]="countryForm.get('name')?.touched && countryForm.get('name')?.invalid"
 		type="text"
 		placeholder="Nom du pays"
-		name="countryName"
 		id="countryName"
 		required
 	  />
@@ -19,14 +18,18 @@
 	  <label for="countryFlag">Drapeau du pays</label>
 	  <input
 		formControlName="flag"
+		[class.is-invalid]="countryForm.get('flag')?.touched && countryForm.get('flag')?.invalid"
 		type="text"
 		placeholder="URL du drapeau"
-		name="countryFlag"
 		id="countryFlag"
 		required
 	  />
+	  <div *ngIf="countryForm.get('flag')?.touched && countryForm.get('flag')?.invalid">
+		<small class="text-danger">L'URL du drapeau est obligatoire.</small>
+	  </div>
 	</div>
   
-	<button type="submit" class="submit-button">Ajouter</button>
+	<!-- Bouton de soumission désactivé si le formulaire est invalide -->
+	<button type="submit" class="submit-button" [disabled]="countryForm.invalid">Ajouter</button>
   </form>
   

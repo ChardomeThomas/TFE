@@ -1,26 +1,88 @@
-<form action="" class="photo-form">
-	<p>photo</p>
+<form *ngIf="!submitted" [formGroup]="photoForm" (ngSubmit)="submit()">
+	<!-- URL de la photo -->
 	<div class="form-group">
-	  <label for="photoName">Nom du pays</label>
-	  <input [(ngModel)]="value"
-      #example="ngModel"
-      [class.is-invalid]="example.touched && example.invalid"type="text" placeholder="Nom du pays" name="photoName" id="photoName" required>
+	  <label for="photo_url">URL de la photo :</label>
+	  <input
+		formControlName="url"
+		type="text"
+		placeholder="URL de la photo"
+		id="photo_url"
+		required
+		[ngClass]="{
+		  'is-invalid': photoForm.controls['url'].invalid && photoForm.controls['url'].touched
+		}"
+	  />
+	  <div *ngIf="photoForm.controls['url'].invalid && photoForm.controls['url'].touched">
+		<span class="error" *ngIf="photoForm.controls['url'].hasError('required')">
+		  Le champ URL de la photo est requis.
+		</span>
+		<span class="error" *ngIf="photoForm.controls['url'].hasError('pattern')">
+		  Le champ URL de la photo doit être une URL valide.
+		</span>
+	  </div>
 	</div>
   
+	<!-- Titre de la photo -->
 	<div class="form-group">
-	  <label for="photo">photo</label>
-	  <input type="text" placeholder="URL du drapeau" name="photo" id="photo" required>
-	</div>
-	<div class="form-group">
-		<label for="photoDescription">Description de la photo</label>
-		<textarea 
-		  placeholder="Description de la photo" 
-		  name="photoDescription" 
-		  id="photoDescription" 
-		  rows="4"
-		  cols="50" 
-		  required></textarea>
+	  <label for="photo_title">Titre de la photo :</label>
+	  <input
+		formControlName="title"
+		type="text"
+		placeholder="Titre de la photo"
+		id="photo_title"
+		required
+		[ngClass]="{
+		  'is-invalid': photoForm.controls['title'].invalid && photoForm.controls['title'].touched
+		}"
+	  />
+	  <div *ngIf="photoForm.controls['title'].invalid && photoForm.controls['title'].touched">
+		<span class="error">Le champ Titre est requis.</span>
 	  </div>
-	<button type="submit" class="submit-button">Ajouter</button>
+	</div>
+  
+	<!-- Description de la photo -->
+	<div class="form-group">
+	  <label for="photo_description">Description de la photo :</label>
+	  <textarea
+		formControlName="description"
+		placeholder="Description de la photo"
+		id="photo_description"
+		rows="4"
+		cols="50"
+		required
+		[ngClass]="{
+		  'is-invalid': photoForm.controls['description'].invalid && photoForm.controls['description'].touched
+		}"
+	  ></textarea>
+	  <div *ngIf="photoForm.controls['description'].invalid && photoForm.controls['description'].touched">
+		<span class="error">Le champ Description est requis.</span>
+	  </div>
+	</div>
+  
+	<!-- Visibilité -->
+	<div class="form-group">
+	  <label for="visibility">Visibilité :</label>
+	  <select
+		formControlName="visibility"
+		id="visibility"
+		[ngClass]="{
+		  'is-invalid': photoForm.controls['visibility'].invalid && photoForm.controls['visibility'].touched
+		}"
+	  >
+		<option value="public">Publique</option>
+		<option value="private">Privée</option>
+	  </select>
+	  <div *ngIf="photoForm.controls['visibility'].invalid && photoForm.controls['visibility'].touched">
+		<span class="error">Le champ Visibilité est requis.</span>
+	  </div>
+	</div>
+  
+	<!-- Bouton de soumission -->
+	<button type="submit" class="submit-button" [disabled]="photoForm.invalid">Ajouter</button>
   </form>
+  
+  <!-- Message de confirmation après soumission -->
+  <div *ngIf="submitted" class="confirmation-message">
+	<p>La photo a été ajoutée avec succès !</p>
+  </div>
   

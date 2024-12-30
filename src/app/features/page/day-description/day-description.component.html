@@ -1,46 +1,48 @@
-<!-- <div class="back-button" (click)="goBack()"><p>← retour liste des jours</p></div>-->
- <app-image-background>
-<!-- <button (click)="toggleForm()">
-	{{ isFormVisible ? 'Masquer le formulaire' : 'Ajouter une photo' }}
-  </button>
-  <div class="modal-overlay" *ngIf="isFormVisible">
-	<div class="modal-content">
-	  <app-day-form></app-day-form>
-	  <button class="close-button" (click)="toggleForm()">Fermer</button>
-	</div>
-  </div> -->
+<app-image-background>
   <section class="title">
-    <h1>Découvrez Les photos</h1>
+    <h1>Découvrez les photos</h1>
     <p class="font-200">de notre journée...</p>
   </section>
+
   <section class="content">
-<h1>{{ city }} {{ day }} , {{ country }}</h1>
-<div *ngIf="dayData">
-  <h2>{{ dayData.date }}</h2>
-  <h4 >{{ dayData.description }}</h4>
-  <div class="container">
-    <div *ngFor="let photo of dayData.photos; let i = index" (click)="onPhotoClick(i)">
-      <p class="font-300">{{ photo.description }}</p>
-      
-      <!-- Ngx Skeleton Loader -->
-      <ngx-skeleton-loader 
-        *ngIf="!photo.loaded" 
-        count="1" 
-        appearance="circle" 
-        animation="progress-dark">
-      </ngx-skeleton-loader>
-      
-      <!-- Image -->
-      <img 
-        [src]="photo.url" 
-        alt="{{ photo.description }}" 
-        (load)="photo.loaded = true" 
-        [hidden]="!photo.loaded">
+    <h1>{{ city }} - Jour {{ day }}</h1>
+
+    <div *ngIf="photos.length > 0">
+      <div class="container">
+        <div *ngFor="let photo of photos; let i = index" (click)="onPhotoClick(photo)">
+          <p class="font-300">{{ photo.description }}</p>
+          
+          <ngx-skeleton-loader 
+            *ngIf="!photo.loaded" 
+            count="1" 
+            appearance="circle" 
+            animation="progress-dark">
+          </ngx-skeleton-loader>
+          
+          <img 
+            [src]="photo.url" 
+            alt="{{ photo.description }}" 
+            (load)="photo.loaded = true" 
+            [hidden]="!photo.loaded">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div *ngIf="!dayData">
-  <p>No data found for Day {{ day }} in {{ city }}, {{ country }}.</p>
-</div>
-</section>
-</app-image-background> 
+
+    <div *ngIf="photos.length === 0">
+      <p>Aucune photo trouvée pour {{ day }} à {{ city }}.</p>
+    </div>
+
+    <!-- Modal Pop-up -->
+    <div *ngIf="isModalOpen" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-image">
+          <img [src]="selectedPhoto?.url" alt="Photo sélectionnée" />
+        </div>
+        <div class="modal-description">
+          <p>{{ selectedPhoto?.description }}</p>
+        </div>
+        <span (click)="closeModal()" class="close-button">&times;</span>
+      </div>
+    </div>
+  </section>
+</app-image-background>

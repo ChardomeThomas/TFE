@@ -12,8 +12,7 @@
 	  />
 	  <div *ngIf="cityForm.get('name')?.touched && cityForm.get('name')?.invalid" class="invalid-feedback">
 		<small *ngIf="cityForm.get('name')?.hasError('required')">Le nom de la ville est requis.</small>
-		<small *ngIf="cityForm.get('name')?.hasError('minlength')">Le nom de la ville est trop court.</small>
-		<small *ngIf="cityForm.get('name')?.hasError('maxlength')">Le nom de la ville est trop long.</small>
+
 	  </div>
 	</div>
 	

@@ -47,4 +47,13 @@
 	background-color: #45a049; /* Couleur verte plus foncée au survol */
   }
   
+
+  .error {
+	color: red; /* Texte des erreurs en rouge */
+  }
+  
+  .submit-button:disabled {
+	background-color: #ddd; /* Désactiver le bouton lorsqu'il est désactivé */
+	cursor: not-allowed;
+  }
   

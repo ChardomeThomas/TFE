@@ -16,7 +16,7 @@ export class CountryFormComponent {
   constructor(private http: HttpClient) {
     this.countryForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      flag: new FormControl('', [Validators.required]) // Champ pour l'URL du drapeau
+      flag: new FormControl('', [Validators.required, Validators.pattern('https?://.+')]) // Champ pour l'URL du drapeau
     });
   }
 

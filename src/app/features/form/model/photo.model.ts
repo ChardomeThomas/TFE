@@ -3,5 +3,5 @@ export interface Photo{
     dayId:number;
     url: string;
     description: string;
-    
+    visiblity: 'private' | 'public';
 }
