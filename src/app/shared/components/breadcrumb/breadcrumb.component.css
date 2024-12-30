@@ -1,0 +1,23 @@
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .breadcrumb-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .breadcrumb-link:hover {
+    text-decoration: none;
+  }
+  
+  span {
+    color: gray;
+  }
+  .test{
+    background-color: red;
+    z-index: 1000;
+    position: relative;
+  }
