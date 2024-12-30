@@ -6,24 +6,27 @@
 
   <section class="content">
     <h1>{{ city }} - Jour {{ day }}</h1>
-
     <div *ngIf="photos.length > 0">
       <div class="container">
         <div *ngFor="let photo of photos; let i = index" (click)="onPhotoClick(photo)">
-          <p class="font-300">{{ photo.description }}</p>
           
-          <ngx-skeleton-loader 
-            *ngIf="!photo.loaded" 
-            count="1" 
-            appearance="circle" 
-            animation="progress-dark">
-          </ngx-skeleton-loader>
-          
-          <img 
-            [src]="photo.url" 
-            alt="{{ photo.description }}" 
-            (load)="photo.loaded = true" 
-            [hidden]="!photo.loaded">
+          <!-- Conditionner l'affichage des photos privées en fonction de l'état de connexion -->
+          <div *ngIf="isUserLoggedIn || !photo.isPrivate">
+            <p class="font-300">{{ photo.title }}</p>
+
+            <ngx-skeleton-loader 
+              *ngIf="!photo.loaded" 
+              count="1" 
+              appearance="circle" 
+              animation="progress-dark">
+            </ngx-skeleton-loader>
+
+            <img 
+              [src]="photo.url" 
+              alt="{{ photo.description }}" 
+              (load)="photo.loaded = true" 
+              [hidden]="!photo.loaded">
+          </div>
         </div>
       </div>
     </div>

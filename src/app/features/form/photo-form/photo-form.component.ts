@@ -43,21 +43,21 @@ export class PhotoFormComponent {
   submit() {
     if (this.photoForm.valid && this.dayId) {
       const photoData = {
-        id_day: this.dayId,  // Utilise dayId directement
+        id_day: this.dayId,  
         title: this.photoForm.value.title,
         url: this.photoForm.value.url,
         description: this.photoForm.value.description,
         visibility: this.photoForm.value.visibility
       };
   
-      console.log('Données envoyées :', photoData);  // Affiche les données dans la console
+      console.log('Données envoyées :', photoData);  
   
       this.http.post('https://thomas-chardome.be/ajout-json/photos.php', photoData, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
       }).subscribe(
         (response) => {
           console.log('Photo ajoutée :', response);
-          this.submitted = true;  // Fermer le formulaire après soumission
+          this.submitted = true;  
         },
         (error) => {
           console.error('Erreur lors de l\'ajout de la photo :', error);
@@ -74,7 +74,7 @@ export class PhotoFormComponent {
     }
   }
   closeForm() {
-    window.location.reload();  // Recharge la page
+    window.location.reload();  
   }
   
 }

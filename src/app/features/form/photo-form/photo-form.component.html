@@ -49,14 +49,11 @@
 		id="photo_description"
 		rows="4"
 		cols="50"
-		required
 		[ngClass]="{
 		  'is-invalid': photoForm.controls['description'].invalid && photoForm.controls['description'].touched
 		}"
 	  ></textarea>
-	  <div *ngIf="photoForm.controls['description'].invalid && photoForm.controls['description'].touched">
-		<span class="error">Le champ Description est requis.</span>
-	  </div>
+	 
 	</div>
   
 	<!-- Visibilité -->

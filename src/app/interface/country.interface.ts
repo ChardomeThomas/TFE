@@ -16,9 +16,12 @@
     title: string;
     url: string;
     description: string;
-    visibility: string;
-    loaded:false | true;
+    isPrivate: boolean; // Modifier le type en boolean
+    loaded: boolean;
   }
+  
+  
+  
 
   //ancienne interface
   export interface Country {

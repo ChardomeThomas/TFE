@@ -5,6 +5,7 @@ import { Photo2 } from '../../../interface/country.interface'; // Assure-toi que
 import { CommonModule } from '@angular/common';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ImageBackgroundComponent } from '../../../shared/components/image-background/image-background.component';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-day-description',
@@ -19,45 +20,52 @@ export class DayDescriptionComponent implements OnInit {
   photos: Photo2[] = [];       // Tableau pour stocker les photos de la journée sélectionnée
   selectedPhoto: Photo2 | null = null;  // Photo sélectionnée à afficher dans le modal
   isModalOpen: boolean = false;        // Contrôle l'état du modal
-
+  isUserLoggedIn: boolean = false;    // Etat de connexion de l'utilisateur
+  
   constructor(
     private route: ActivatedRoute,
     private jsonService: JsonService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService  // Injection du service AuthService
   ) {}
 
   ngOnInit() {
+    // Vérifie si l'utilisateur est connecté
+    this.isUserLoggedIn = this.authService.isLoggedIn();
+    console.log('Utilisateur connecté au chargement :', this.isUserLoggedIn);
+  
     // Récupérer l'ID du jour depuis l'URL
     this.route.paramMap.subscribe(params => {
       this.city = params.get('city')!;
-      this.day = params.get('day')!; // Cela récupère "Jour1", "Jour2", etc.
-
-      // Extraire l'ID du jour depuis le nom du jour dans l'URL (par exemple, "Jour1" -> 1)
+      this.day = params.get('day')!;
       const dayId = parseInt(this.day.replace('Jour', ''), 10);
-      
-      // Charger les photos pour ce jour
       this.loadPhotosForDay(dayId);
     });
   }
 
   loadPhotosForDay(dayId: number) {
     this.jsonService.getPhotos().subscribe((data: any) => {
-      // Filtrer les photos correspondant à l'ID du jour
-      this.photos = data.photos.filter((photo: Photo2) => photo.id_day === dayId);
-      console.log('Photos:', this.photos);  // Affiche les photos dans la console
+      this.photos = data.photos.map((photo: any) => ({
+        ...photo,
+        isPrivate: photo.visibility === 'private', // Convertit visibility en boolean
+        loaded: false, // Initialiser loaded si nécessaire
+      })).filter((photo: Photo2) => 
+        photo.id_day === dayId && (this.isUserLoggedIn || !photo.isPrivate)
+      );
+    
+      console.log('Photos après conversion et filtrage :', this.photos);
     });
+    
   }
 
-  // Méthode pour ouvrir le modal avec la photo sélectionnée
+
   onPhotoClick(photo: Photo2): void {
     this.selectedPhoto = photo;
-    this.isModalOpen = true;  // Ouvre le modal
+    this.isModalOpen = true;
   }
+
   closeModal() {
     this.isModalOpen = false;
-    this.router.navigate([this.router.url]);  // Redirige vers la même page, ce qui déclenche un rechargement du composant
+    this.router.navigate([this.router.url]);
   }
-  
-  
-  
 }
