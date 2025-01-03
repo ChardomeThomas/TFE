@@ -43,6 +43,7 @@ h1, h4, p {
 	align-items: center;
 	flex-direction: row;
 	justify-content: center;
+	flex-wrap: wrap;
 	margin-right:25px;
 	margin-top:50px;
 	
@@ -72,6 +73,7 @@ h1, h4, p {
 	width: 400px;
 	background-color: white;
 	display:flex;
+	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: center;
   }
@@ -116,3 +118,70 @@ h1, h4, p {
 	margin-top:10px;
 	font-size:16px;
   }
+
+  @media screen and (max-width: 1350px) {
+	.button{
+	height:100vh;
+		width:90%;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	mat-card:nth-child(2){
+		margin-top:50px;
+  }
+
+  @media screen and (max-width: 960px) {
+	.clickable-image{
+		width:90%;
+	}
+	.clickable-image:nth-child(2){
+		width:60%;
+	}
+.button{
+	width:100%;
+	display:flex;
+	flex-direction: column;
+	margin-top:25px;
+	align-content:center;
+	justify-content: space-around;
+}
+.example-card-left{
+	width:80%;
+	margin-right:auto;
+	margin-left:auto;
+	display:flex;
+}
+.left-card{
+	margin-left:0px;
+	text-align: center;
+}
+
+.left-card-content{
+	margin-top:0px;
+
+}
+mat-card-actions{
+	display:block;
+}
+.example-card-right{
+	width:100%;
+}
+  }
+
+  @media screen and (max-width: 400px) {
+body{
+	display:none;
+
+}
+}
+@media screen and (max-width:960px)and ( orientation: landscape) {
+	.button{
+		height:100vh;
+		display:flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	mat-card:nth-child(2){
+		margin-top:50px;
+	}
+}

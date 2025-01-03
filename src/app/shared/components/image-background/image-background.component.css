@@ -14,7 +14,21 @@
 	position: absolute;
 	z-index:0;
   }
-  
+  .unsupported-message {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100vh; /* Occupe tout l'écran */
+	  background-color: black;
+	  color: white;
+	  font-size: 24px;
+	  font-weight: bold;
+	  text-align: center;
+	}
+	
+
+	  
+	  
   @media (max-width: 1600px) {
 	.background-img {
 	  object-fit: cover; /* Appliquer 'cover' de 1600px à 0px */

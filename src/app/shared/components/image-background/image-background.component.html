@@ -1,7 +1,12 @@
-<div class="image-background">
-	<img class="background-img" src="../../../../assets/image/Calque 1.png" alt="">
-	<app-breadcrumb></app-breadcrumb>
-	<app-header></app-header>
-	<ng-content></ng-content>
+<!-- Si l'écran est trop petit -->
+<div *ngIf="isUnsupportedFormat" class="unsupported-message">
+  Format non compatible
 </div>
-  
+
+<!-- Sinon, affiche le contenu principal -->
+<div *ngIf="!isUnsupportedFormat" class="image-background">
+	<img class="background-img" src="../../../../assets/image/Calque 1.png" alt="Image de fond">
+	<app-header></app-header>
+	<app-breadcrumb></app-breadcrumb>
+  <ng-content></ng-content>
+</div>
