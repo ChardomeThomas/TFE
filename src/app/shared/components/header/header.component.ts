@@ -36,17 +36,26 @@ export class HeaderComponent {
     this.router.navigate(['']);
   }
  // Méthode pour se connecter
- login(): void {
-  this.authService.login(); // Utilise le service pour se connecter
-  window.location.reload(); // Rafraîchit la page
-}
+//  login(): void {
+//   this.authService.login(); // Utilise le service pour se connecter
+//   window.location.reload(); // Rafraîchit la page
+// }
 
-logout(): void {
-  this.authService.logout(); // Utilise le service pour se déconnecter
-  window.location.reload(); // Rafraîchit la page
-}
+// logout(): void {
+//   this.authService.logout(); // Utilise le service pour se déconnecter
+//   window.location.reload(); // Rafraîchit la page
+// }
 
-
+login(): void {
+	this.authService.login(); // Simuler une connexion
+	this.router.navigate([]); // Ne pas changer de page
+  }
+  
+  logout(): void {
+	this.authService.logout(); // Simuler une déconnexion
+	this.router.navigate([]); // Ne pas changer de page
+  }
+  
 // Vérifie si l'utilisateur est connecté
 isLoggedIn(): boolean {
   return this.authService.isLoggedIn();  // Utilise le service pour vérifier la connexion

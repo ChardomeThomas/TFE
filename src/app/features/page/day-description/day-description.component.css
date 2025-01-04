@@ -133,3 +133,13 @@ img{
 	color: red;
   }
   
+  
+  @media screen and (max-width: 600px) {
+	.title{
+		text-align:center;
+		display:block;
+	}
+	.title::before{
+		display:none;
+	}
+}

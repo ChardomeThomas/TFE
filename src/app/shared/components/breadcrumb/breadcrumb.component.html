@@ -1,4 +1,4 @@
-<section class="test">
+<section class="section">
 <nav class="breadcrumb">
     <ng-container *ngFor="let breadcrumb of breadcrumbs; let last = last">
       <a 
@@ -9,7 +9,7 @@
         {{ breadcrumb.label }}
       </a>
       <span *ngIf="last">{{ breadcrumb.label }}</span>
-      <span *ngIf="!last"> > </span>
+      <span *ngIf="!last"> >> </span>
     </ng-container>
   </nav>
 </section>

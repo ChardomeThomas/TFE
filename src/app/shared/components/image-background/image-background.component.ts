@@ -11,16 +11,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './image-background.component.css'
 })
 export class ImageBackgroundComponent {
-  isUnsupportedFormat = false;
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.checkScreenSize();
-  }
+//   isUnsupportedFormat = false;
+//   @HostListener('window:resize', ['$event'])
+//   onResize() {
+//     this.checkScreenSize();
+//   }
 
-  ngOnInit() {
-    this.checkScreenSize(); // Vérifie au chargement
-  }
-  private checkScreenSize() {
-    this.isUnsupportedFormat = window.innerWidth <= 400; // Définis ici ta limite
-  }
+//   ngOnInit() {
+//     this.checkScreenSize(); // Vérifie au chargement
+//   }
+//   private checkScreenSize() {
+//     this.isUnsupportedFormat = window.innerWidth <= 400; // Définis ici ta limite
+//   }
 }

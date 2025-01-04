@@ -76,6 +76,7 @@ h1, h4, p {
 	flex-wrap: wrap;
 	flex-direction: column;
 	align-items: center;
+	cursor:not-allowed;
   }
   mat-card{
 	border-radius: 10px;
@@ -106,8 +107,9 @@ h1, h4, p {
 	border-radius:25px;
 	padding: 10px 20px;
 	margin-top:10px;
-  }
-  .button-right:hover{
+}
+.button-right:hover{
+	  cursor:not-allowed;
 	background-color:red;
 }
   .bold-text{
@@ -120,6 +122,9 @@ h1, h4, p {
   }
 
   @media screen and (max-width: 1350px) {
+	.title{
+		text-align: center;
+	}
 	.button{
 	height:100vh;
 		width:90%;
@@ -168,12 +173,8 @@ mat-card-actions{
 }
   }
 
-  @media screen and (max-width: 400px) {
-body{
-	display:none;
 
-}
-}
+
 @media screen and (max-width:960px)and ( orientation: landscape) {
 	.button{
 		height:100vh;
@@ -186,3 +187,23 @@ body{
 	}
 }
   }
+
+  @media screen and (max-width: 600px) {
+	.title::before{
+		display:none;
+	}
+	.button{
+		display: flex;
+		flex-direction: row;
+	}
+	.clickable-image:nth-child(1){
+		margin-top:150px;
+	}
+	.clickable-image:nth-child(2){
+		margin-top:20px;
+	}
+	.example-card-right{
+		height:100%;
+		margin-bottom:50px;
+	}
+	}

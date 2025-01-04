@@ -119,3 +119,13 @@ h1, h4, p {
 	z-index: 1;  /* Placer l'image derrière le texte */
   }
   
+  @media screen and (max-width: 600px) {
+	.title{
+		display:block;
+		text-align: center;
+		margin-top:50px;
+	}
+	.title::before{
+		display:none;
+	}
+	}

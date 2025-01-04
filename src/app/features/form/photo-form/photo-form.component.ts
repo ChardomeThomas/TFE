@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ export class PhotoFormComponent {
   dayId!: number;
   submitted: boolean = false;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
     this.photoForm = new FormGroup({
       url: new FormControl('', [Validators.required, Validators.pattern('https?://.+')]),
       title: new FormControl('', [Validators.required]),
@@ -74,7 +74,9 @@ export class PhotoFormComponent {
     }
   }
   closeForm() {
-    window.location.reload();  
+    // window.location.reload();  
+	this.router.navigate([this.router.url]);
+
   }
   
 }
