@@ -1,30 +1,48 @@
 <form *ngIf="!submitted" [formGroup]="dayForm" (ngSubmit)="submit()">
 	<div class="form-group">
-		<label for="day_number">Jour :</label>
-		<input formControlName="day_number" type="text" placeholder="Jour" id="day_number" required>
-		<div *ngIf="dayForm.controls['day_number'].invalid && dayForm.controls['day_number'].touched">
-			<span class="error" *ngIf="dayForm.controls['day_number'].hasError('required')">
-				Le champ Jour est requis.
-			</span>
-			<span class="error" *ngIf="dayForm.controls['day_number'].hasError('pattern')">
-				Le champ Jour doit être un nombre entier.
-			</span>
-		</div>
+	  <label for="day_number">Jour :</label>
+	  <input formControlName="day_number" type="text" placeholder="Jour" id="day_number" required>
+	  <div *ngIf="dayForm.controls['day_number'].invalid && dayForm.controls['day_number'].touched">
+		<span class="error" *ngIf="dayForm.controls['day_number'].hasError('required')">
+		  Le champ Jour est requis.
+		</span>
+		<span class="error" *ngIf="dayForm.controls['day_number'].hasError('pattern')">
+		  Le champ Jour doit être un nombre entier.
+		</span>
+	  </div>
 	</div>
-
+  
 	<div class="form-group">
-		<label for="day_description">Description de la journée :</label>
-		<textarea formControlName="description" placeholder="Description de la journée" id="day_description" rows="4"
-			cols="50" required></textarea>
-		<div *ngIf="dayForm.controls['description'].invalid && dayForm.controls['description'].touched">
-			<span class="error">Le champ Description est requis.</span>
-		</div>
+	  <label for="day_description">Description de la journée :</label>
+	  <textarea formControlName="description" placeholder="Description de la journée" id="day_description" rows="4"
+		cols="50" required></textarea>
+	  <div *ngIf="dayForm.controls['description'].invalid && dayForm.controls['description'].touched">
+		<span class="error">Le champ Description est requis.</span>
+	  </div>
 	</div>
-
+  
+	<div class="form-group">
+	  <label for="photo_url">URL de la photo :</label>
+	  <input formControlName="url" type="text" placeholder="URL de la photo" id="photo_url" required
+		[ngClass]="{
+		  'is-invalid': dayForm.controls['url'].invalid && dayForm.controls['url'].touched
+		}"
+	  />
+	  <div *ngIf="dayForm.controls['url'].invalid && dayForm.controls['url'].touched">
+		<span class="error" *ngIf="dayForm.controls['url'].hasError('required')">
+		  Le champ URL de la photo est requis.
+		</span>
+		<span class="error" *ngIf="dayForm.controls['url'].hasError('pattern')">
+		  Le champ URL de la photo doit être une URL valide.
+		</span>
+	  </div>
+	</div>
+	
 	<button type="submit" class="submit-button" [disabled]="dayForm.invalid">Ajouter</button>
-</form>
-
-<!-- Message de confirmation après soumission -->
-<div *ngIf="submitted" class="confirmation-message">
+  </form>
+  
+  <!-- Message de confirmation après soumission -->
+  <div *ngIf="submitted" class="confirmation-message">
 	<p>La journée a été ajoutée avec succès !</p>
-</div>
+  </div>
+  

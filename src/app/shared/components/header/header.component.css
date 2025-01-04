@@ -3,6 +3,19 @@ body{
 	color:rgb(2,48,74);
 	z-index:1;
 }
+.banner{
+	position: absolute;
+	color:white;
+	background-color: black;
+	margin-bottom:100px;
+	width:100%;
+	text-align: center;
+	height:20px;
+	font-size: 7px;
+	margin-top:0;
+	padding-bottom:5px;
+	display:none;
+}
 .logo{
 	z-index:5;
 }
@@ -151,3 +164,7 @@ body{
 	}
 	
   }
+  @media screen and (max-width: 400px) {
+	.banner{
+		display:block;}
+	}

@@ -9,6 +9,7 @@
     day_number: number;
     id_city: number;
     description:string;
+	url:string;
   }
   export interface Photo2 {
     id_photo: number;

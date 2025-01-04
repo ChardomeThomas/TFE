@@ -21,7 +21,8 @@ export class DayFormComponent {
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.dayForm = new FormGroup({
       day_number: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+$')]),
-      description: new FormControl('', [Validators.required])
+      description: new FormControl('', [Validators.required]),
+      url: new FormControl('', [Validators.required, Validators.pattern('https?://.+')]),
     });
 
     // Récupérer la ville depuis l'URL
@@ -49,30 +50,34 @@ export class DayFormComponent {
   }
 
   submit() {
-    if (this.dayForm.valid) {
-      const dayData = {
-        day_number: this.dayForm.value.day_number,
-        description: this.dayForm.value.description,
-        id_city: this.cityId
-      };
-
-      this.http.post('https://thomas-chardome.be/ajout-json/days.php', dayData, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-      }).subscribe(
-        (response) => {
-          console.log('Journée ajoutée :', response);
-          this.submitted = true; // Le formulaire a été soumis avec succès
-          setTimeout(() => {
-            window.location.reload(); // Actualise la page après un délai pour laisser le temps à l'utilisateur de voir le message
-          }, 1000);
-        },
-        (error) => {
-          console.error('Erreur lors de l\'ajout de la journée :', error);
-          alert(`Erreur lors de l'ajout de la journée. ${error.message}`);
-        }
-      );
-    } else {
-      alert('Formulaire invalide');
-    }
+	if (this.dayForm.valid) {
+	  const dayData = {
+		day_number: this.dayForm.value.day_number,
+		description: this.dayForm.value.description,
+		id_city: this.cityId,
+		url: this.dayForm.value.url // URL du champ photo
+	  };
+  
+	  console.log('URL du champ photo:', dayData.url); // Affiche l'URL avant l'envoi
+  
+	  this.http.post('https://thomas-chardome.be/ajout-json/days.php', dayData, {
+		headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+	  }).subscribe(
+		(response) => {
+		  console.log('Journée ajoutée :', response);
+		  this.submitted = true;
+		  setTimeout(() => {
+			window.location.reload();
+		  }, 1000);
+		},
+		(error) => {
+		  console.error('Erreur lors de l\'ajout de la journée :', error);
+		  alert(`Erreur lors de l'ajout de la journée. ${error.message}`);
+		}
+	  );
+	} else {
+	  alert('Formulaire invalide');
+	}
   }
+  
 }
