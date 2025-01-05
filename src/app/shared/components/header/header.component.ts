@@ -23,11 +23,19 @@ export class HeaderComponent {
       console.log(this.currentPage);
     });
   }
+  ngOnInit() {
+    const url = new URL(window.location.href);
+    if (url.searchParams.has('reload')) {
+      url.searchParams.delete('reload');
+      this.router.navigate([url.pathname], { queryParams: {} }); // Supprimer le paramètre de rechargement
+    }
+  }
   openForm(formType: string) {
     this.currentForm = formType; 
   }
   closeForm() {
     this.currentForm = ''; 
+    window.location.href = window.location.href.split('?')[0] + '?reload=' + new Date().getTime();
   }
   
   
@@ -35,42 +43,36 @@ export class HeaderComponent {
   onLogoClick() {
     this.router.navigate(['']);
   }
- // Méthode pour se connecter
-//  login(): void {
-//   this.authService.login(); // Utilise le service pour se connecter
-//   window.location.reload(); // Rafraîchit la page
-// }
-
-// logout(): void {
-//   this.authService.logout(); // Utilise le service pour se déconnecter
-//   window.location.reload(); // Rafraîchit la page
-// }
 
 login(): void {
-	this.authService.login(); // Simuler une connexion
-	this.router.navigate([]); // Ne pas changer de page
+	this.authService.login(); 
+	// this.router.navigate([]); // Ne pas changer de page
+    window.location.href = window.location.href.split('?')[0] + '?reload=' + new Date().getTime();
   }
   
   logout(): void {
-	this.authService.logout(); // Simuler une déconnexion
-	this.router.navigate([]); // Ne pas changer de page
+	this.authService.logout(); 
+	// this.router.navigate([]); // Ne pas changer de page
+  window.location.href = window.location.href.split('?')[0] + '?reload=' + new Date().getTime();
   }
   
 // Vérifie si l'utilisateur est connecté
 isLoggedIn(): boolean {
   return this.authService.isLoggedIn();  // Utilise le service pour vérifier la connexion
 }
+isOnCountryList(): boolean{
+  return this.currentPage.includes('/country-list');
+}
   // Vérifie si l'URL contient '/country/city' sans '/country-city'
   isOnCountryCityPage(): boolean {
     return this.currentPage.includes('/country-city') && !this.currentPage.includes('/day') && !this.currentPage.includes('/Jour');
   }
 
-  // Vérifie si l'URL correspond à une page de jour, e.g. '/country/city/Jour1'
   isOnDayPage(): boolean {
     return /^\/[^\/]+\/[^\/]+$/.test(this.currentPage) && !this.currentPage.includes('/country-city');
   }
-  // Vérifie si l'URL correspond à une page de photo, e.g. '/country/city/Jour1/photo'
   isOnPhotoPage(): boolean {
     return this.currentPage.includes('/Jour');
   }
+
 }

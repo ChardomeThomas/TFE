@@ -1,11 +1,8 @@
 .image-background {
 	position: relative;
 	display:block;
-	/* background-image: url('../../../../assets/image/Background.jpg'); */
 	height:100vh;
-	/* overflow:hidden; */
-	/* height:100%; */
-	width: 100%; /* Prend toute la largeur de l'écran */
+	width: 100%; 
 	
   }
   .background-img{
@@ -18,7 +15,7 @@
 	  display: flex;
 	  justify-content: center;
 	  align-items: center;
-	  height: 100vh; /* Occupe tout l'écran */
+	  height: 100vh;
 	  background-color: black;
 	  color: white;
 	  font-size: 24px;
@@ -31,7 +28,7 @@
 	  
   @media (max-width: 1600px) {
 	.background-img {
-	  object-fit: cover; /* Appliquer 'cover' de 1600px à 0px */
+	  object-fit: cover; 
 	  width: 100%;
 	}
 }

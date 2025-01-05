@@ -17,14 +17,14 @@
     title: string;
     url: string;
     description: string;
-    isPrivate: boolean; // Modifier le type en boolean
+    isPrivate: boolean;
     loaded: boolean;
   }
   
   
   
 
-  //ancienne interface
+  //ancienne interface à garder sinon il y a des erreurs à cause de la carte
   export interface Country {
     country: string;
     villes: { [key: string]: any };
@@ -44,4 +44,3 @@
     description: string;
     loaded?: boolean;
   }
-  // photo.interface.ts

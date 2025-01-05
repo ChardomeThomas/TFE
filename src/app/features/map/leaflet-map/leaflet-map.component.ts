@@ -110,11 +110,10 @@ export class LeafletMapComponent implements AfterViewInit {
               layer.on('click', (e) => {
                 this.map.fitBounds(e.target.getBounds());
                 this.addCityMarkers(feature.properties.ADMIN);
-                // Mettre à jour et ouvrir la sidebar
                 this.updateSidebarContent(feature.properties.ADMIN);
-                this.sidebar.open('home'); // 'home' doit correspondre à l'ID de l'onglet dans la sidebar
+                this.sidebar.open('home'); 
               });
-              this.countryLayers.addLayer(layer); // Ajout de la couche au LayerGroup
+              this.countryLayers.addLayer(layer);
             }
           }
         }).addTo(this.map);
@@ -124,7 +123,6 @@ export class LeafletMapComponent implements AfterViewInit {
       }
     );
 
-    // Écouter l'événement de dézoom pour enlever les marqueurs de ville
     this.map.on('zoomend', () => {
       if (this.map.getZoom() < 5) {
         this.clearCityMarkers();
@@ -140,7 +138,7 @@ export class LeafletMapComponent implements AfterViewInit {
       (data: FeatureCollection) => {
         const hongKongLayer = L.geoJSON(data, {
           style: {
-            fillColor: '#FFFF00',  // Couleur spécifique pour Hong Kong
+            fillColor: '#FFFF00',  
             weight: 2,
             opacity: 1,
             color: 'white',
@@ -150,13 +148,12 @@ export class LeafletMapComponent implements AfterViewInit {
           onEachFeature: (feature, layer) => {
             layer.on('click', (e) => {
               this.map.fitBounds(e.target.getBounds());
-              this.hongKongMarker.remove();  // Retirer le marqueur de Hong Kong
+              this.hongKongMarker.remove();  
               this.addCityMarkers('Hong Kong');
-              // Mettre à jour et ouvrir la sidebar
               this.updateSidebarContent('Hong Kong');
-              this.sidebar.open('home'); // 'home' doit correspondre à l'ID de l'onglet dans la sidebar
+              this.sidebar.open('home'); 
             });
-            this.countryLayers.addLayer(layer); // Ajout de la couche au LayerGroup
+            this.countryLayers.addLayer(layer); 
           }
         }).addTo(this.map);
 

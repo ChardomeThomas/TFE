@@ -4,11 +4,9 @@
     <p class="font-100">ainsi qu'une légère description...</p>
   </section>
 
-  <!-- Vérifie si les données de la ville sont disponibles -->
   <div *ngIf="days && days.length > 0">
     <h1 class="city-title">{{ city }}</h1>
     <div class="container">
-      <!-- Itère sur les jours de la ville -->
       <div 
         *ngFor="let jour of days; let i = index" 
         class="card" 
@@ -29,7 +27,6 @@
     </div>
   </div>
 
-  <!-- Si aucune journée n'est disponible pour cette ville -->
   <div *ngIf="days.length === 0">
     <p>Aucune journée disponible pour cette ville pour le moment.</p>
   </div>

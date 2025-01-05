@@ -6,28 +6,29 @@ img{
     width:200px;
     cursor: pointer;
 }
+.cityDay{
+	text-align: center;
+}
 .content{
 	position: relative;
 	z-index: 5;
 }
 .title {
-	position: relative;  /* Permet d'utiliser le pseudo-élément */
-	/* text-align: center; */
+	position: relative;  
 	display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-wrap: nowrap;
 		flex-direction: column;
-	z-index: 2; /* Assure que le texte est visible au-dessus de l'image */
+	z-index: 2; 
 	font-size:36px;
 	width:100%;
 	height:250px;
   }
 .title h1, .title p {
-	position: relative;  /* Assurer que le texte est correctement superposé sur l'image */
-	z-index: 3;  /* Mettre le texte au-dessus de l'image */
+	position: relative;  
+	z-index: 3;  
   }
-  /* Style de l'image de fond */
   .title::before {
 	  content: '';
 	  position: absolute;
@@ -35,11 +36,11 @@ img{
 	  left: 0;
 	  right: 0;
 	  bottom: 0;
-	  background-image: url('../../../../assets/image/shadow_title.png'); /* Ton image de nuage */
+	  background-image: url('../../../../assets/image/shadow_title.png'); 
 	  background-position: center;
-	  background-size: 34%;  /* Utilise 'contain' pour garder l'image à sa taille naturelle sans la déformer */
-	  background-repeat: no-repeat;  /* Empêche l'image de se répéter */
-	  z-index: 1;  /* Placer l'image derrière le texte */
+	  background-size: 34%; 
+	  background-repeat: no-repeat; 
+	  z-index: 1; 
 	}
 	.container{
 		display: flex;
@@ -63,8 +64,7 @@ img{
     width: auto; 
 }
 
- /* Style pour le modal */
-/* Style pour le modal */
+
 .modal-overlay {
 	position: fixed;
 	top: 0;
@@ -75,18 +75,18 @@ img{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 1000; /* Assurez-vous que le modal est au-dessus des autres contenus */
-	overflow: hidden;  /* Empêche le scroll global */
+	z-index: 1000;
+	overflow: hidden; 
   }
   
   .modal-content {
 	background-color: #fff;
 	padding: 20px;
 	border-radius: 8px;
-	width: 90%;  /* La largeur du modal sera de 90% de l'écran */
-	max-width: 800px; /* Limite de la largeur du modal */
-	height: 80vh; /* Limite la hauteur de la modale à 80% de la hauteur de la fenêtre */
-	overflow: hidden; /* Empêche le débordement de la modale */
+	width: 90%; 
+	max-width: 800px; 
+	height: 80vh; 
+	overflow: hidden;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -94,7 +94,7 @@ img{
   
   .modal-image {
 	width: 100%;
-	height: 60%; /* L'image occupe 60% de la hauteur de la modale */
+	height: 60%; 
 	border-radius: 8px;
 	  image-rendering: smooth;
 	position: relative;
@@ -106,12 +106,12 @@ img{
   }
   .modal-description {
 	width: 100%;
-	height: 40%; /* La description occupe 40% de la hauteur de la modale */
-	overflow-y: auto; /* Permet le défilement si le texte est trop long */
+	height: 40%; 
+	overflow-y: auto; 
 	margin-top: 15px;
 	text-align: center;
 	font-size: 1.2rem;
-	word-wrap: break-word; /* Assure que le texte se divise si trop long */
+	word-wrap: break-word; 
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -126,7 +126,7 @@ img{
 	font-size: 2rem;
 	cursor: pointer;
 	color: #000;
-	z-index: 1001; /* Assurez-vous que la croix est au-dessus du contenu */
+	z-index: 1001;
   }
   
   .close-button:hover {

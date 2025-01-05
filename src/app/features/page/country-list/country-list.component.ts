@@ -26,14 +26,10 @@ export class CountryListComponent implements OnInit {
     if (isSuccessful) {
       this.isFormVisible = false; // Cache le formulaire après validation
       // Rafraîchir la liste ou mettre à jour l'affichage si nécessaire
-      this.refreshCountries();
     }
   }
 
-  refreshCountries() {
-    // Ajouter ici la logique pour recharger les données ou mettre à jour la liste des pays
-    console.log('Liste des pays mise à jour.');
-  }
+
   constructor(private jsonService: JsonService, private router: Router) { }
 
   ngOnInit() {

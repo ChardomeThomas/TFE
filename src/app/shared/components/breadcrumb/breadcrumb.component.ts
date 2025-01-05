@@ -15,7 +15,7 @@ export class BreadcrumbComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.updateBreadcrumbs();  // Appel initial de updateBreadcrumbs
+    this.updateBreadcrumbs();  
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.updateBreadcrumbs();

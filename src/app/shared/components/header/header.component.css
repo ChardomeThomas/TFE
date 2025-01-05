@@ -61,8 +61,7 @@ body{
 		display:flex;
 		justify-content: space-between;
 		align-items: center;
-        /* width: 100vw; Assure que l'élément prend toute la hauteur de la page */
-		/* margin: 0px 60px; */
+
       }
     .logo img{
         margin:0;
@@ -97,17 +96,7 @@ body{
 		width: 15px;
 	  }
 	  
-	/* .connexion_btn{
-		right:0;
-		top:0;
-		cursor:pointer;
-		margin-left:25px;
-		border-radius:25px;
-		padding: 10px 25px;
-		border:none;
-		color:white;
-		background-color: rgb(2,48,74);
-	} */
+
  }
 
  .modal-overlay {
@@ -124,7 +113,6 @@ body{
 	cursor:default;
   }
   
-  /* Contenu de la fenêtre modale */
   .modal-content {
 	background: white;
 	padding: 20px;
@@ -136,7 +124,6 @@ body{
 	position: relative;
   }
   
-  /* Bouton de fermeture */
   .close-button {
 	position: absolute;
 	top: 10px;

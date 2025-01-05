@@ -1,4 +1,3 @@
-/* Styles communs */
 body {
     margin: 0;
     padding: 0;
@@ -10,14 +9,7 @@ h1, h4, p {
 	margin: 0;
 	padding: 0;
   }
-/* .back-button {
-    display: inline-block; 
-    margin: 20px 0;
-    padding: 10px;
-    cursor: pointer;
-    text-align: left;
-    width: auto; 
-} */
+
 
 .country-title {
     font-size: 24px;
@@ -53,7 +45,6 @@ h1, h4, p {
     text-align: center;
 }
 
-/* Responsive styles */
 @media (min-width: 768px) {
     .country-title {
         font-size: 28px;
@@ -86,25 +77,23 @@ h1, h4, p {
 }
 
 .title {
-	position: relative;  /* Permet d'utiliser le pseudo-élément */
-	/* text-align: center; */
+	position: relative;  
 	display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-wrap: nowrap;
 		flex-direction: column;
-	z-index: 2; /* Assure que le texte est visible au-dessus de l'image */
+	z-index: 2; 
 	font-size:36px;
 	width:100%;
 	height:250px;
   }
   
   .title h1, .title p {
-	position: relative;  /* Assurer que le texte est correctement superposé sur l'image */
-	z-index: 3;  /* Mettre le texte au-dessus de l'image */
+	position: relative;  
+	z-index: 3;  
   }
   
-  /* Style de l'image de fond */
   .title::before {
 	content: '';
 	position: absolute;

@@ -73,10 +73,6 @@ export class PhotoFormComponent {
       }
     }
   }
-  closeForm() {
-    // window.location.reload();  
-	this.router.navigate([this.router.url]);
 
-  }
   
 }
