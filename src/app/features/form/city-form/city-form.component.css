@@ -43,7 +43,7 @@
   }
   
 
-  .error {
+  .invalid {
 	color: red; 
   }
   
@@ -51,4 +51,6 @@
 	background-color: #ddd; 
 	cursor: not-allowed;
   }
-  
+  .confirmation-message{
+	color:green;
+  }

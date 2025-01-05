@@ -17,7 +17,7 @@ export class CityFormComponent {
   countries: any[] = [];  // Tableau pour stocker les pays
   countryId!: number;  // ID du pays récupéré depuis l'URL
   countryName!: string;  // Nom du pays récupéré depuis l'URL
-
+  submitted: boolean = false; 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     // Initialisation du formulaire avec validation
     this.cityForm = new FormGroup({
@@ -55,7 +55,6 @@ export class CityFormComponent {
     );
   }
 
-  // Envoie les données au backend pour ajouter une ville
   submit() {
     // Vérifier si le formulaire est valide et si l'ID du pays est récupéré
     if (this.cityForm.valid && this.countryId) {
@@ -82,8 +81,8 @@ export class CityFormComponent {
       }).subscribe(
         (response) => {
           console.log('Ville ajoutée :', response);
+          this.submitted = true;
           this.cityForm.reset();  // Réinitialise le formulaire après soumission
-          alert('Ville ajoutée avec succès'); // Optionnel : ajouter un message de confirmation
         },
         (error) => {
           console.error('Erreur lors de l’ajout de la ville :', error);
